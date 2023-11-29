@@ -1,10 +1,21 @@
-name: cookbook-dev
+name: esgf-cookbook-dev
 channels:
   - conda-forge
+  - pyviz
 dependencies:
   - jupyter-book
   - jupyterlab
   - jupyter_server
+  - hvplot
+  - holoviews
+  - numpy
+  - cartopy
+  - matplotlib
+  - globus-compute-sdk
+  - globus-compute-endpoint
+  - xarray
+  - cf_xarray
   - pip
   - pip:
       - sphinx-pythia-theme
+      - git+https://github.com/nocollier/intake-esgf
