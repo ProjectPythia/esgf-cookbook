@@ -4,6 +4,9 @@ parts:
   - caption: Preamble
     chapters:
       - file: notebooks/how-to-cite
+  - caption: Searching
+    chapters:
+      - file: notebooks/complex-search
   - caption: Workflows
     chapters:
       - file: notebooks/enso-globus
