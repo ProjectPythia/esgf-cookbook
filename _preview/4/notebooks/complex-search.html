@@ -388,7 +388,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <td><p>Helpful</p></td>
 <td><p>Similar interface</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2008JD010405">Transient climate response</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://doi.org/10.1029/2008JD010405">Transient climate response</a></p></td>
 <td><p>Background</p></td>
 <td><p></p></td>
 </tr>
@@ -467,19 +467,19 @@ SolrESGFIndex(&#39;esgf-node.ornl.gov&#39;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Searching indices: 100%|███████████████████████████████|8/8 [    1.85s/index]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Searching indices: 100%|███████████████████████████████|8/8 [    1.36s/index]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary information for 399 results:
 mip_era                                                     [CMIP6]
 activity_id                                                  [CMIP]
-institution_id    [MOHC, MRI, MPI-M, NCAR, NOAA-GFDL, NCC, NIMS-...
-source_id         [UKESM1-0-LL, MRI-ESM2-0, MPI-ESM1-2-LR, CESM2...
+institution_id    [CNRM-CERFACS, IPSL, MOHC, MRI, MPI-M, NCAR, N...
+source_id         [CNRM-ESM2-1, CNRM-CM6-1, IPSL-CM6A-LR, CNRM-C...
 experiment_id                                  [piControl, 1pctCO2]
-member_id         [r1i1p1f2, r1i2p1f1, r1i1p1f1, r2i1p1f1, r3i1p...
-table_id                                         [Lmon, Omon, Amon]
-variable_id                                       [nbp, fgco2, tas]
-grid_label                                            [gn, gr1, gr]
+member_id         [r1i1p1f2, r2i1p1f2, r3i1p1f2, r1i1p1f1, r4i1p...
+table_id                                         [Omon, Amon, Lmon]
+variable_id                                       [fgco2, tas, nbp]
+grid_label                                            [gn, gr, gr1]
 dtype: object
 </pre></div>
 </div>
@@ -494,16 +494,16 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Cyan">2023-12-06 15:51:39 </span><span class=" -Color -Color-Green">search begin</span> experiment_id=[&#39;piControl&#39;, &#39;1pctCO2&#39;], variable_id=[&#39;tas&#39;, &#39;fgco2&#39;, &#39;nbp&#39;], table_id=[&#39;Amon&#39;, &#39;Omon&#39;, &#39;Lmon&#39;]
-<span class=" -Color -Color-Cyan">2023-12-06 15:51:40 </span>└─GlobusESGFIndex(&#39;anl-dev&#39;) results=329 response_time=1.33 total_time=1.34
-<span class=" -Color -Color-Cyan">2023-12-06 15:51:41 </span>└─SolrESGFIndex(&#39;esgf-node.ipsl.upmc.fr&#39;) response_time=1.39 total_time=1.86
-<span class=" -Color -Color-Cyan">2023-12-06 15:51:41 </span>└─SolrESGFIndex(&#39;esg-dn1.nsc.liu.se&#39;) response_time=1.68 total_time=2.28
-<span class=" -Color -Color-Cyan">2023-12-06 15:51:44 </span>└─SolrESGFIndex(&#39;esgf.ceda.ac.uk&#39;) response_time=1.30 total_time=5.06
-<span class=" -Color -Color-Cyan">2023-12-06 15:51:45 </span>└─SolrESGFIndex(&#39;esgf.nci.org.au&#39;) response_time=3.42 total_time=6.59
-<span class=" -Color -Color-Cyan">2023-12-06 15:51:46 </span>└─SolrESGFIndex(&#39;esgf-node.ornl.gov&#39;) response_time=0.78 total_time=6.76
-<span class=" -Color -Color-Cyan">2023-12-06 15:51:46 </span>└─SolrESGFIndex(&#39;esgf-data.dkrz.de&#39;) response_time=1.89 total_time=7.29
-<span class=" -Color -Color-Cyan">2023-12-06 15:51:54 </span>└─SolrESGFIndex(&#39;esgf-node.llnl.gov&#39;) response_time=1.83 total_time=14.77
-<span class=" -Color -Color-Cyan">2023-12-06 15:51:54 </span><span class=" -Color -Color-Green">search end</span> total_time=15.26
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Cyan">2023-12-07 09:37:01 </span><span class=" -Color -Color-Green">search begin</span> experiment_id=[&#39;piControl&#39;, &#39;1pctCO2&#39;], variable_id=[&#39;tas&#39;, &#39;fgco2&#39;, &#39;nbp&#39;], table_id=[&#39;Amon&#39;, &#39;Omon&#39;, &#39;Lmon&#39;]
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:02 </span>└─SolrESGFIndex(&#39;esgf-node.ipsl.upmc.fr&#39;) response_time=1.42 total_time=1.89
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:03 </span>└─GlobusESGFIndex(&#39;anl-dev&#39;) results=329 response_time=2.19 total_time=2.19
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:03 </span>└─SolrESGFIndex(&#39;esg-dn1.nsc.liu.se&#39;) response_time=1.90 total_time=2.47
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:06 </span>└─SolrESGFIndex(&#39;esgf.ceda.ac.uk&#39;) response_time=2.40 total_time=5.31
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:07 </span>└─SolrESGFIndex(&#39;esgf.nci.org.au&#39;) response_time=3.26 total_time=6.56
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:08 </span>└─SolrESGFIndex(&#39;esgf-node.ornl.gov&#39;) response_time=1.51 total_time=6.92
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:08 </span>└─SolrESGFIndex(&#39;esgf-data.dkrz.de&#39;) response_time=2.80 total_time=7.63
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:11 </span>└─SolrESGFIndex(&#39;esgf-node.llnl.gov&#39;) response_time=1.49 total_time=10.89
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:12 </span><span class=" -Color -Color-Green">search end</span> total_time=11.41
 </pre></div>
 </div>
 </div>
@@ -552,71 +552,71 @@ dtype: object
       <th>0</th>
       <td>CMIP6</td>
       <td>CMIP</td>
-      <td>MOHC</td>
-      <td>UKESM1-0-LL</td>
+      <td>CNRM-CERFACS</td>
+      <td>CNRM-ESM2-1</td>
       <td>piControl</td>
       <td>r1i1p1f2</td>
-      <td>Lmon</td>
-      <td>nbp</td>
+      <td>Omon</td>
+      <td>fgco2</td>
       <td>gn</td>
-      <td>v20200828</td>
-      <td>[CMIP6.CMIP.MOHC.UKESM1-0-LL.piControl.r1i1p1f...</td>
+      <td>v20181115</td>
+      <td>[CMIP6.CMIP.CNRM-CERFACS.CNRM-ESM2-1.piControl...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>CMIP6</td>
       <td>CMIP</td>
-      <td>MRI</td>
-      <td>MRI-ESM2-0</td>
-      <td>1pctCO2</td>
-      <td>r1i2p1f1</td>
-      <td>Omon</td>
-      <td>fgco2</td>
-      <td>gn</td>
-      <td>v20210311</td>
-      <td>[CMIP6.CMIP.MRI.MRI-ESM2-0.1pctCO2.r1i2p1f1.Om...</td>
+      <td>CNRM-CERFACS</td>
+      <td>CNRM-CM6-1</td>
+      <td>piControl</td>
+      <td>r1i1p1f2</td>
+      <td>Amon</td>
+      <td>tas</td>
+      <td>gr</td>
+      <td>v20180814</td>
+      <td>[CMIP6.CMIP.CNRM-CERFACS.CNRM-CM6-1.piControl....</td>
     </tr>
     <tr>
       <th>2</th>
       <td>CMIP6</td>
       <td>CMIP</td>
-      <td>MPI-M</td>
-      <td>MPI-ESM1-2-LR</td>
+      <td>CNRM-CERFACS</td>
+      <td>CNRM-ESM2-1</td>
       <td>piControl</td>
-      <td>r1i1p1f1</td>
-      <td>Omon</td>
-      <td>fgco2</td>
-      <td>gn</td>
-      <td>v20190710</td>
-      <td>[CMIP6.CMIP.MPI-M.MPI-ESM1-2-LR.piControl.r1i1...</td>
+      <td>r1i1p1f2</td>
+      <td>Amon</td>
+      <td>tas</td>
+      <td>gr</td>
+      <td>v20181115</td>
+      <td>[CMIP6.CMIP.CNRM-CERFACS.CNRM-ESM2-1.piControl...</td>
     </tr>
     <tr>
       <th>3</th>
       <td>CMIP6</td>
       <td>CMIP</td>
-      <td>NCAR</td>
-      <td>CESM2-FV2</td>
+      <td>CNRM-CERFACS</td>
+      <td>CNRM-ESM2-1</td>
       <td>piControl</td>
-      <td>r1i1p1f1</td>
-      <td>Amon</td>
-      <td>tas</td>
-      <td>gn</td>
-      <td>v20191120</td>
-      <td>[CMIP6.CMIP.NCAR.CESM2-FV2.piControl.r1i1p1f1....</td>
+      <td>r1i1p1f2</td>
+      <td>Lmon</td>
+      <td>nbp</td>
+      <td>gr</td>
+      <td>v20181115</td>
+      <td>[CMIP6.CMIP.CNRM-CERFACS.CNRM-ESM2-1.piControl...</td>
     </tr>
     <tr>
       <th>4</th>
       <td>CMIP6</td>
       <td>CMIP</td>
-      <td>NOAA-GFDL</td>
-      <td>GFDL-CM4</td>
+      <td>CNRM-CERFACS</td>
+      <td>CNRM-CM6-1</td>
       <td>1pctCO2</td>
-      <td>r1i1p1f1</td>
+      <td>r1i1p1f2</td>
       <td>Amon</td>
       <td>tas</td>
-      <td>gr1</td>
-      <td>v20180701</td>
-      <td>[CMIP6.CMIP.NOAA-GFDL.GFDL-CM4.1pctCO2.r1i1p1f...</td>
+      <td>gr</td>
+      <td>v20180626</td>
+      <td>[CMIP6.CMIP.CNRM-CERFACS.CNRM-CM6-1.1pctCO2.r1...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -717,6 +717,104 @@ dtype: object
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>variable_id</th>
+    </tr>
+    <tr>
+      <th>source_id</th>
+      <th>member_id</th>
+      <th>grid_label</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ACCESS-CM2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>ACCESS-ESM1-5</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>AWI-CM-1-1-MR</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>AWI-ESM-1-1-LR</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>BCC-CSM2-MR</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">UKESM1-0-LL</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>r2i1p1f2</th>
+      <th>gn</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>r3i1p1f2</th>
+      <th>gn</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>r4i1p1f2</th>
+      <th>gn</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>UKESM1-1-LL</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+<p>148 rows × 1 columns</p>
+</div></div></div>
 </div>
 <p>The function <code class="docutils literal notranslate"><span class="pre">model_groups()</span></code> returns a pandas Series (converted to a dataframe here for printing) with all unique combinations of (<code class="docutils literal notranslate"><span class="pre">source_id</span></code>,<code class="docutils literal notranslate"><span class="pre">member_id</span></code>,<code class="docutils literal notranslate"><span class="pre">grid_label</span></code>) along with the dataset count for each. This helps illustrate why it can be so difficult to locate all the data relevant to a given analysis. At the time of this writing, there are 148 model groups but relatively few of them with all 6 (2 experiments and 3 variables) datasets that we need. Furthermore, you cannot rely on a model group using <code class="docutils literal notranslate"><span class="pre">r1i1p1f1</span></code> for its primary result. The results above show that UKESM does not even use <code class="docutils literal notranslate"><span class="pre">f1</span></code> at all, further complicating the process of finding results.</p>
 <p>In addition to this notion of <em>model groups</em>, <code class="docutils literal notranslate"><span class="pre">intake-esgf</span></code> provides you a method <code class="docutils literal notranslate"><span class="pre">remove_incomplete()</span></code> for determing which model groups you wish to keep in the current search. Internally, we will group the search results dataframe by model groups and apply a function of your design to the grouped portion of the dataframe. For example, for the current work, I could just check that there are 6 datasets in the sub-dataframe.</p>
@@ -733,6 +831,186 @@ dtype: object
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>variable_id</th>
+    </tr>
+    <tr>
+      <th>source_id</th>
+      <th>member_id</th>
+      <th>grid_label</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ACCESS-ESM1-5</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">CanESM5</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>r1i1p2f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">CanESM5-1</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>r1i1p2f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CanESM5-CanOE</th>
+      <th>r1i1p2f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2-FV2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2-WACCM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2-WACCM-FV2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CMCC-ESM2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">GISS-E2-1-G</th>
+      <th>r101i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>r102i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>INM-CM4-8</th>
+      <th>r1i1p1f1</th>
+      <th>gr1</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>INM-CM5-0</th>
+      <th>r1i1p1f1</th>
+      <th>gr1</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MIROC-ES2L</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MPI-ESM-1-2-HAM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MPI-ESM1-2-LR</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MRI-ESM2-0</th>
+      <th>r1i2p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>NorCPM1</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">NorESM2-LM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>r1i1p4f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>NorESM2-MM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>UKESM1-0-LL</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>UKESM1-1-LL</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>You could write a much more complex check–it depends on what is relevant to your analysis. The effect is that the list of possible models with consistent results is now much more manageable. This method has the added benefit of forcing the user to be concrete about which models were included in an analysis.</p>
 </div>
@@ -746,6 +1024,166 @@ dtype: object
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>variable_id</th>
+    </tr>
+    <tr>
+      <th>source_id</th>
+      <th>member_id</th>
+      <th>grid_label</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ACCESS-ESM1-5</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CanESM5</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CanESM5-1</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CanESM5-CanOE</th>
+      <th>r1i1p2f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2-FV2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2-WACCM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2-WACCM-FV2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CMCC-ESM2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>GISS-E2-1-G</th>
+      <th>r101i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>INM-CM4-8</th>
+      <th>r1i1p1f1</th>
+      <th>gr1</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>INM-CM5-0</th>
+      <th>r1i1p1f1</th>
+      <th>gr1</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MIROC-ES2L</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MPI-ESM-1-2-HAM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MPI-ESM1-2-LR</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MRI-ESM2-0</th>
+      <th>r1i2p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>NorCPM1</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>NorESM2-LM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>NorESM2-MM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>UKESM1-0-LL</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>UKESM1-1-LL</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="summary">
