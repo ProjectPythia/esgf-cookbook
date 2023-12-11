@@ -18,4 +18,4 @@ dependencies:
   - pip
   - pip:
       - sphinx-pythia-theme
-      - git+https://github.com/nocollier/intake-esgf
+      - git+https://github.com/esgf2-us/intake-esgf
