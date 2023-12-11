@@ -6,6 +6,7 @@ parts:
       - file: notebooks/how-to-cite
   - caption: Searching
     chapters:
+      - file: notebooks/intro-search
       - file: notebooks/complex-search
   - caption: Workflows
     chapters:

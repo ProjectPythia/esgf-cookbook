@@ -1,4 +1,4 @@
-<img src="images/esgf.png" alt="thumbnail" width="300"/>
+<img src="notebooks/images/logos/esgf2-us.png" alt="thumbnail" width="300"/>
 
 # ESGF Cookbook
 
