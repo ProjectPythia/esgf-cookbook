@@ -14,6 +14,7 @@ dependencies:
   - matplotlib
   - globus-compute-sdk
   - globus-compute-endpoint
+  - netCDF4
   - xarray
   - cf_xarray
   - pip
