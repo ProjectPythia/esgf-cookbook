@@ -17,6 +17,7 @@ dependencies:
   - netCDF4
   - xarray
   - cf_xarray
+  - dask
   - pip
   - pip:
       - sphinx-pythia-theme
