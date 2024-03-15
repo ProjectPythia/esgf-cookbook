@@ -17,6 +17,8 @@ dependencies:
   - netCDF4
   - xarray
   - cf_xarray
+  - clisops
+  - geoviews
   - dask
   - pip
   - pip:

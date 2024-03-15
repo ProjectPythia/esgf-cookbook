@@ -11,3 +11,4 @@ parts:
   - caption: Workflows
     chapters:
       - file: notebooks/enso-globus
+      - file: notebooks/yearly-average-selection-globus
