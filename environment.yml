@@ -32,6 +32,6 @@ dependencies:
       - sphinxcontrib-qthelp<1.0.6 
       - sphinxcontrib-serializinghtml<1.1.9
       - pydata-sphinx-theme<=0.8
-      - jsonschema-with-format-nongpl<4.19.1
+      - jsonschema-with-format-nongpl
       - docutils==0.16
       - git+https://github.com/esgf2-us/intake-esgf
