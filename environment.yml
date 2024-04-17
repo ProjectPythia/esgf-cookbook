@@ -18,6 +18,7 @@ dependencies:
   - xarray
   - cf_xarray
   - clisops
+  - rooki
   - geoviews
   - dask
   - pip
