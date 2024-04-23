@@ -10,6 +10,7 @@ parts:
       - file: notebooks/complex-search
   - caption: Workflows
     chapters:
+      - file: notebooks/rooki
       - file: notebooks/enso-globus
       - file: notebooks/enso-globus-flow
       - file: notebooks/yearly-average-selection-globus
