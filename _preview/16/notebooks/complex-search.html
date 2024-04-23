@@ -1,0 +1,1331 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complex Searching with intake-esgf &#8212; ESGF Cookbook</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-pythia-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Compute Demo: Use Rooki to access CMIP6 data" href="rooki.html" />
+    <link rel="prev" title="Introduction to intake-esgf" href="intro-search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="132">
+    <div class="container-fluid" id="shim"></div>
+    <div class="container-fluid" id="banner"></div>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="https://projectpythia.org">
+  <img src="../_static/esgf2-us.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class=" collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/esgf2-us/" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/project_pythia" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" rel="noopener" target="_blank" title="YouTube">
+            <span><i class="fab fa-youtube-square"></i></span>
+            <label class="sr-only">YouTube</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    <div class="container-xl">
+      <div class="row">
+        
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   ESGF Cookbook
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preamble
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="how-to-cite.html">
+   How to Cite This Cookbook
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Searching
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro-search.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     intake-esgf
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Complex Searching with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     intake-esgf
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Workflows
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="rooki.html">
+   Compute Demo: Use Rooki to access CMIP6 data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="enso-globus.html">
+   ENSO Calculations using Globus Compute
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="enso-globus-flow.html">
+   ENSO Calculations using Globus Flows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="yearly-average-selection-globus.html">
+   Basic Demonstration of Data Reduction Using Globus, Intake-ESGF, and Clisops
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by <a href="https://projectpythia.org">Project Pythia</a>.<br><br>
+All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons BY 4.0 (CC BY 4.0)</a>.<br><br>
+
+</div>
+
+</div>
+
+        
+
+        <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main"><div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/complex-search.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/esgf2-us/esgf-cookbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/esgf2-us/esgf-cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/complex-search.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/esgf2-us/esgf-cookbook/edit/main/notebooks/complex-search.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://binder-nimbus.llnl.gov/v2/gh/esgf2-us/esgf-cookbook/main?urlpath=lab/tree/notebooks/complex-search.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://nimbus.llnl.gov/hub/user-redirect/git-pull?repo=https://github.com/esgf2-us/esgf-cookbook&urlpath=lab/tree/esgf-cookbook/notebooks/complex-search.ipynb&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> On this page
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initializing-the-catalog">
+   Initializing the Catalog
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#populate-the-catalog">
+   Populate the catalog
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-groups">
+   Model Groups
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removing-additional-variants">
+   Removing Additional Variants
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+          <div id="main-content" class="row">
+            <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+              
+              <div>
+                
+  <p><a class="reference internal" href="../_images/esgf2-us.png"><img alt="ESGF logo" src="../_images/esgf2-us.png" style="width: 250px;" /></a></img></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="complex-searching-with-intake-esgf">
+<h1>Complex Searching with <code class="docutils literal notranslate"><span class="pre">intake-esgf</span></code><a class="headerlink" href="#complex-searching-with-intake-esgf" title="Permalink to this headline"><i class="fas fa-link"></i></a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>In this tutorial we will present an interface under design to facilitate complex searching using <a class="reference external" href="https://github.com/esgf2-us/intake-esgf">intake-esgf</a>. <code class="docutils literal notranslate"><span class="pre">intake-esgf</span></code> is a small <code class="docutils literal notranslate"><span class="pre">intake</span></code> and <code class="docutils literal notranslate"><span class="pre">intake-esm</span></code> <em>inspired</em> package under development in ESGF2. Please note that there is a name collison with an existing package in PyPI and conda. You will need to install the package from <a class="reference external" href="https://github.com/esgf2-us/intake-esgf">source</a>.</p>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concepts</p></th>
+<th class="head"><p>Importance</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/esgf2-us/intake-esgf">Install Package</a></p></td>
+<td><p>Necessary</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/data-formats/netcdf-cf.html">Understanding of NetCDF</a></p></td>
+<td><p>Helpful</p></td>
+<td><p>Familiarity with metadata structure</p></td>
+</tr>
+<tr class="row-even"><td><p>Familiar with <a class="reference external" href="https://intake-esm.readthedocs.io/en/stable/">intake-esm</a></p></td>
+<td><p>Helpful</p></td>
+<td><p>Similar interface</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://doi.org/10.1029/2008JD010405">Transient climate response</a></p></td>
+<td><p>Background</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Time to learn</strong>: 30 minutes</p></li>
+</ul>
+</div>
+<div class="section" id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">intake_esgf</span> <span class="kn">import</span> <span class="n">ESGFCatalog</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="initializing-the-catalog">
+<h2>Initializing the Catalog<a class="headerlink" href="#initializing-the-catalog" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>As with <code class="docutils literal notranslate"><span class="pre">intake-esm</span></code> we first instantiate the catalog. However, since we will populate the catalog with search results, the catalog starts empty. Internally, we query different ESGF index nodes for information about what datasets you wish to include in your analysis. As ESGF2 is actively working on an index redesign, our catlogs by default point to a Globus (ElasticSearch) based index at ALCF (Argonne Leadership Computing Facility).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">ESGFCatalog</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">cat</span><span class="o">.</span><span class="n">indices</span><span class="p">:</span> <span class="c1"># Which indices are included?</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Perform a search() to populate the catalog.
+GlobusESGFIndex(&#39;anl-dev&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We also provide support for connecting to the ESGF1 Solr-based indices. You may specify a server or list or just include <code class="docutils literal notranslate"><span class="pre">True</span></code> to choose all the federated index nodes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">ESGFCatalog</span><span class="p">(</span><span class="n">esgf1_indices</span><span class="o">=</span><span class="s2">&quot;esgf-node.llnl.gov&quot;</span><span class="p">)</span>  <span class="c1"># include LLNL</span>
+<span class="n">cat</span> <span class="o">=</span> <span class="n">ESGFCatalog</span><span class="p">(</span><span class="n">esgf1_indices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;esgf-node.ornl.gov&quot;</span><span class="p">,</span> <span class="s2">&quot;esgf.ceda.ac.uk&quot;</span><span class="p">])</span>  <span class="c1"># ORNL &amp; CEDA</span>
+<span class="n">cat</span> <span class="o">=</span> <span class="n">ESGFCatalog</span><span class="p">(</span><span class="n">esgf1_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># all federated indices</span>
+<span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">cat</span><span class="o">.</span><span class="n">indices</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GlobusESGFIndex(&#39;anl-dev&#39;)
+SolrESGFIndex(&#39;esgf.ceda.ac.uk&#39;)
+SolrESGFIndex(&#39;esgf-data.dkrz.de&#39;)
+SolrESGFIndex(&#39;esgf-node.ipsl.upmc.fr&#39;)
+SolrESGFIndex(&#39;esg-dn1.nsc.liu.se&#39;)
+SolrESGFIndex(&#39;esgf-node.llnl.gov&#39;)
+SolrESGFIndex(&#39;esgf.nci.org.au&#39;)
+SolrESGFIndex(&#39;esgf-node.ornl.gov&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="populate-the-catalog">
+<h2>Populate the catalog<a class="headerlink" href="#populate-the-catalog" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>Many times, an analysis will require several variables across multiple experiments. For example, if one were to compute the transient climate response (TCRE), you would need tempererature (<code class="docutils literal notranslate"><span class="pre">tas</span></code>) and carbon emissions from land (<code class="docutils literal notranslate"><span class="pre">nbp</span></code>) and ocean (<code class="docutils literal notranslate"><span class="pre">fgco2</span></code>) for a 1% CO2 increase experiment (<code class="docutils literal notranslate"><span class="pre">1pctCO2</span></code>) as well as the control experiment (<code class="docutils literal notranslate"><span class="pre">piControl</span></code>). If TCRE is not in your particular science, that is ok for this notebook. It is a motivating example and the specifics are less important than the search concepts. First, we perform a search in a familiar syntax.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+    <span class="n">experiment_id</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;piControl&quot;</span><span class="p">,</span> <span class="s2">&quot;1pctCO2&quot;</span><span class="p">],</span>
+    <span class="n">variable_id</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tas&quot;</span><span class="p">,</span> <span class="s2">&quot;fgco2&quot;</span><span class="p">,</span> <span class="s2">&quot;nbp&quot;</span><span class="p">],</span>
+    <span class="n">table_id</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Amon&quot;</span><span class="p">,</span> <span class="s2">&quot;Omon&quot;</span><span class="p">,</span> <span class="s2">&quot;Lmon&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Searching indices: 100%|███████████████████████████████|8/8 [    1.36s/index]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary information for 399 results:
+mip_era                                                     [CMIP6]
+activity_id                                                  [CMIP]
+institution_id    [CNRM-CERFACS, IPSL, MOHC, MRI, MPI-M, NCAR, N...
+source_id         [CNRM-ESM2-1, CNRM-CM6-1, IPSL-CM6A-LR, CNRM-C...
+experiment_id                                  [piControl, 1pctCO2]
+member_id         [r1i1p1f2, r2i1p1f2, r3i1p1f2, r1i1p1f1, r4i1p...
+table_id                                         [Omon, Amon, Lmon]
+variable_id                                       [fgco2, tas, nbp]
+grid_label                                            [gn, gr, gr1]
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Internally, this launches simultaneous searches that are combined locally to provide a global view of what datasets are available. While the Solr indices themselves can be searched in distributed fashion, they will not report if an index has failed to return a response. As index nodes go down from time to time, this can leave you with a false impression that you have found all the datasets of interest. By managing the searches locally, <code class="docutils literal notranslate"><span class="pre">intake-esgf</span></code> can report back to you that an index has failed and that your results may be incomplete.</p>
+<p>If you would like details about what <code class="docutils literal notranslate"><span class="pre">intake-esgf</span></code> is doing, look in the local cache directory (<code class="docutils literal notranslate"><span class="pre">${HOME}/.esgf/</span></code>) for a <code class="docutils literal notranslate"><span class="pre">esgf.log</span></code> file. This is a full history of everything that <code class="docutils literal notranslate"><span class="pre">intake-esgf</span></code> has searched, downloaded, or accessed. You can also look at just this session by calling <code class="docutils literal notranslate"><span class="pre">session_log()</span></code>. In this case you will see how long each index took to return a response and if any failed</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">session_log</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Cyan">2023-12-07 09:37:01 </span><span class=" -Color -Color-Green">search begin</span> experiment_id=[&#39;piControl&#39;, &#39;1pctCO2&#39;], variable_id=[&#39;tas&#39;, &#39;fgco2&#39;, &#39;nbp&#39;], table_id=[&#39;Amon&#39;, &#39;Omon&#39;, &#39;Lmon&#39;]
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:02 </span>└─SolrESGFIndex(&#39;esgf-node.ipsl.upmc.fr&#39;) response_time=1.42 total_time=1.89
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:03 </span>└─GlobusESGFIndex(&#39;anl-dev&#39;) results=329 response_time=2.19 total_time=2.19
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:03 </span>└─SolrESGFIndex(&#39;esg-dn1.nsc.liu.se&#39;) response_time=1.90 total_time=2.47
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:06 </span>└─SolrESGFIndex(&#39;esgf.ceda.ac.uk&#39;) response_time=2.40 total_time=5.31
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:07 </span>└─SolrESGFIndex(&#39;esgf.nci.org.au&#39;) response_time=3.26 total_time=6.56
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:08 </span>└─SolrESGFIndex(&#39;esgf-node.ornl.gov&#39;) response_time=1.51 total_time=6.92
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:08 </span>└─SolrESGFIndex(&#39;esgf-data.dkrz.de&#39;) response_time=2.80 total_time=7.63
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:11 </span>└─SolrESGFIndex(&#39;esgf-node.llnl.gov&#39;) response_time=1.49 total_time=10.89
+<span class=" -Color -Color-Cyan">2023-12-07 09:37:12 </span><span class=" -Color -Color-Green">search end</span> total_time=11.41
+</pre></div>
+</div>
+</div>
+</div>
+<p>At this stage of the search you have a catalog full of possibly relevant datasets for your analysis, stored in a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> dataframe. You are free to view and manipulate this dataframe to help hone these results down. It is available to you as the <code class="docutils literal notranslate"><span class="pre">df</span></code> member of the <code class="docutils literal notranslate"><span class="pre">ESGFCatalog</span></code>. You should be careful to only remove rows as internally we could use any column in the downloading of the data. Also note that we have removed the user-facing notion of <em>where</em> the data is hosted. The <code class="docutils literal notranslate"><span class="pre">id</span></code> column of this dataframe is a list of full <code class="docutils literal notranslate"><span class="pre">dataset_ids</span></code> which includes the location information. At the point when you are ready to download data, we will choose locations automatically that are fastest for you.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span><span class="o">.</span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mip_era</th>
+      <th>activity_id</th>
+      <th>institution_id</th>
+      <th>source_id</th>
+      <th>experiment_id</th>
+      <th>member_id</th>
+      <th>table_id</th>
+      <th>variable_id</th>
+      <th>grid_label</th>
+      <th>version</th>
+      <th>id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CMIP6</td>
+      <td>CMIP</td>
+      <td>CNRM-CERFACS</td>
+      <td>CNRM-ESM2-1</td>
+      <td>piControl</td>
+      <td>r1i1p1f2</td>
+      <td>Omon</td>
+      <td>fgco2</td>
+      <td>gn</td>
+      <td>v20181115</td>
+      <td>[CMIP6.CMIP.CNRM-CERFACS.CNRM-ESM2-1.piControl...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CMIP6</td>
+      <td>CMIP</td>
+      <td>CNRM-CERFACS</td>
+      <td>CNRM-CM6-1</td>
+      <td>piControl</td>
+      <td>r1i1p1f2</td>
+      <td>Amon</td>
+      <td>tas</td>
+      <td>gr</td>
+      <td>v20180814</td>
+      <td>[CMIP6.CMIP.CNRM-CERFACS.CNRM-CM6-1.piControl....</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CMIP6</td>
+      <td>CMIP</td>
+      <td>CNRM-CERFACS</td>
+      <td>CNRM-ESM2-1</td>
+      <td>piControl</td>
+      <td>r1i1p1f2</td>
+      <td>Amon</td>
+      <td>tas</td>
+      <td>gr</td>
+      <td>v20181115</td>
+      <td>[CMIP6.CMIP.CNRM-CERFACS.CNRM-ESM2-1.piControl...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CMIP6</td>
+      <td>CMIP</td>
+      <td>CNRM-CERFACS</td>
+      <td>CNRM-ESM2-1</td>
+      <td>piControl</td>
+      <td>r1i1p1f2</td>
+      <td>Lmon</td>
+      <td>nbp</td>
+      <td>gr</td>
+      <td>v20181115</td>
+      <td>[CMIP6.CMIP.CNRM-CERFACS.CNRM-ESM2-1.piControl...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CMIP6</td>
+      <td>CMIP</td>
+      <td>CNRM-CERFACS</td>
+      <td>CNRM-CM6-1</td>
+      <td>1pctCO2</td>
+      <td>r1i1p1f2</td>
+      <td>Amon</td>
+      <td>tas</td>
+      <td>gr</td>
+      <td>v20180626</td>
+      <td>[CMIP6.CMIP.CNRM-CERFACS.CNRM-CM6-1.1pctCO2.r1...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1304</th>
+      <td>CMIP6</td>
+      <td>CMIP</td>
+      <td>NASA-GISS</td>
+      <td>GISS-E2-1-G</td>
+      <td>1pctCO2</td>
+      <td>r102i1p1f1</td>
+      <td>Lmon</td>
+      <td>nbp</td>
+      <td>gn</td>
+      <td>v20190815</td>
+      <td>[CMIP6.CMIP.NASA-GISS.GISS-E2-1-G.1pctCO2.r102...</td>
+    </tr>
+    <tr>
+      <th>1309</th>
+      <td>CMIP6</td>
+      <td>CMIP</td>
+      <td>MRI</td>
+      <td>MRI-ESM2-0</td>
+      <td>1pctCO2</td>
+      <td>r1i2p1f1</td>
+      <td>Amon</td>
+      <td>tas</td>
+      <td>gn</td>
+      <td>v20191205</td>
+      <td>[CMIP6.CMIP.MRI.MRI-ESM2-0.1pctCO2.r1i2p1f1.Am...</td>
+    </tr>
+    <tr>
+      <th>2048</th>
+      <td>CMIP6</td>
+      <td>CMIP</td>
+      <td>MIROC</td>
+      <td>MIROC-ES2H</td>
+      <td>piControl</td>
+      <td>r1i1p4f2</td>
+      <td>Omon</td>
+      <td>fgco2</td>
+      <td>gr1</td>
+      <td>v20230904</td>
+      <td>[CMIP6.CMIP.MIROC.MIROC-ES2H.piControl.r1i1p4f...</td>
+    </tr>
+    <tr>
+      <th>2050</th>
+      <td>CMIP6</td>
+      <td>CMIP</td>
+      <td>E3SM-Project</td>
+      <td>E3SM-2-0-NARRM</td>
+      <td>1pctCO2</td>
+      <td>r1i1p1f1</td>
+      <td>Amon</td>
+      <td>tas</td>
+      <td>gr</td>
+      <td>v20230427</td>
+      <td>[CMIP6.CMIP.E3SM-Project.E3SM-2-0-NARRM.1pctCO...</td>
+    </tr>
+    <tr>
+      <th>2051</th>
+      <td>CMIP6</td>
+      <td>CMIP</td>
+      <td>E3SM-Project</td>
+      <td>E3SM-2-0-NARRM</td>
+      <td>piControl</td>
+      <td>r1i1p1f1</td>
+      <td>Amon</td>
+      <td>tas</td>
+      <td>gr</td>
+      <td>v20230505</td>
+      <td>[CMIP6.CMIP.E3SM-Project.E3SM-2-0-NARRM.piCont...</td>
+    </tr>
+  </tbody>
+</table>
+<p>399 rows × 11 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="model-groups">
+<h2>Model Groups<a class="headerlink" href="#model-groups" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>However, <code class="docutils literal notranslate"><span class="pre">intake-esgf</span></code> also provides you with some tools to help locate relevant data for your analysis. When conducting these kinds of analyses, we are seeking for unique combinations of a <code class="docutils literal notranslate"><span class="pre">source_id</span></code>, <code class="docutils literal notranslate"><span class="pre">member_id</span></code>, and <code class="docutils literal notranslate"><span class="pre">grid_label</span></code> that have all the variables that we need. We call these <em>model groups</em>. In an ESGF search, it is common to find a model that has, for example, a <code class="docutils literal notranslate"><span class="pre">tas</span></code> for <code class="docutils literal notranslate"><span class="pre">r1i1p1f1</span></code> but not a <code class="docutils literal notranslate"><span class="pre">fgco2</span></code>. Sorting this out is time consuming and labor intensive. So first, we provide you a function to print out all model groups with the following function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span><span class="o">.</span><span class="n">model_groups</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>variable_id</th>
+    </tr>
+    <tr>
+      <th>source_id</th>
+      <th>member_id</th>
+      <th>grid_label</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ACCESS-CM2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>ACCESS-ESM1-5</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>AWI-CM-1-1-MR</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>AWI-ESM-1-1-LR</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>BCC-CSM2-MR</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">UKESM1-0-LL</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>r2i1p1f2</th>
+      <th>gn</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>r3i1p1f2</th>
+      <th>gn</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>r4i1p1f2</th>
+      <th>gn</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>UKESM1-1-LL</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+<p>148 rows × 1 columns</p>
+</div></div></div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">model_groups()</span></code> returns a pandas Series (converted to a dataframe here for printing) with all unique combinations of (<code class="docutils literal notranslate"><span class="pre">source_id</span></code>,<code class="docutils literal notranslate"><span class="pre">member_id</span></code>,<code class="docutils literal notranslate"><span class="pre">grid_label</span></code>) along with the dataset count for each. This helps illustrate why it can be so difficult to locate all the data relevant to a given analysis. At the time of this writing, there are 148 model groups but relatively few of them with all 6 (2 experiments and 3 variables) datasets that we need. Furthermore, you cannot rely on a model group using <code class="docutils literal notranslate"><span class="pre">r1i1p1f1</span></code> for its primary result. The results above show that UKESM does not even use <code class="docutils literal notranslate"><span class="pre">f1</span></code> at all, further complicating the process of finding results.</p>
+<p>In addition to this notion of <em>model groups</em>, <code class="docutils literal notranslate"><span class="pre">intake-esgf</span></code> provides you a method <code class="docutils literal notranslate"><span class="pre">remove_incomplete()</span></code> for determing which model groups you wish to keep in the current search. Internally, we will group the search results dataframe by model groups and apply a function of your design to the grouped portion of the dataframe. For example, for the current work, I could just check that there are 6 datasets in the sub-dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">shall_i_keep_it</span><span class="p">(</span><span class="n">sub_df</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sub_df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="n">cat</span><span class="o">.</span><span class="n">remove_incomplete</span><span class="p">(</span><span class="n">shall_i_keep_it</span><span class="p">)</span>
+<span class="n">cat</span><span class="o">.</span><span class="n">model_groups</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>variable_id</th>
+    </tr>
+    <tr>
+      <th>source_id</th>
+      <th>member_id</th>
+      <th>grid_label</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ACCESS-ESM1-5</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">CanESM5</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>r1i1p2f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">CanESM5-1</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>r1i1p2f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CanESM5-CanOE</th>
+      <th>r1i1p2f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2-FV2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2-WACCM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2-WACCM-FV2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CMCC-ESM2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">GISS-E2-1-G</th>
+      <th>r101i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>r102i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>INM-CM4-8</th>
+      <th>r1i1p1f1</th>
+      <th>gr1</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>INM-CM5-0</th>
+      <th>r1i1p1f1</th>
+      <th>gr1</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MIROC-ES2L</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MPI-ESM-1-2-HAM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MPI-ESM1-2-LR</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MRI-ESM2-0</th>
+      <th>r1i2p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>NorCPM1</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">NorESM2-LM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>r1i1p4f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>NorESM2-MM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>UKESM1-0-LL</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>UKESM1-1-LL</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>You could write a much more complex check–it depends on what is relevant to your analysis. The effect is that the list of possible models with consistent results is now much more manageable. This method has the added benefit of forcing the user to be concrete about which models were included in an analysis.</p>
+</div>
+<div class="section" id="removing-additional-variants">
+<h2>Removing Additional Variants<a class="headerlink" href="#removing-additional-variants" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>It may also be that you wish to only include a single <code class="docutils literal notranslate"><span class="pre">member_id</span></code> in your analysis. The above search shows we have a few models with multiple variants that have all 6 required datasets. To be fair to those that only have 1, you may wish to only keep the <em>smallest</em> variant. We also provide this function as part of the <code class="docutils literal notranslate"><span class="pre">ESGFCatalog</span></code> object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span><span class="o">.</span><span class="n">remove_ensembles</span><span class="p">()</span>
+<span class="n">cat</span><span class="o">.</span><span class="n">model_groups</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>variable_id</th>
+    </tr>
+    <tr>
+      <th>source_id</th>
+      <th>member_id</th>
+      <th>grid_label</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ACCESS-ESM1-5</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CanESM5</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CanESM5-1</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CanESM5-CanOE</th>
+      <th>r1i1p2f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2-FV2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2-WACCM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CESM2-WACCM-FV2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>CMCC-ESM2</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>GISS-E2-1-G</th>
+      <th>r101i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>INM-CM4-8</th>
+      <th>r1i1p1f1</th>
+      <th>gr1</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>INM-CM5-0</th>
+      <th>r1i1p1f1</th>
+      <th>gr1</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MIROC-ES2L</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MPI-ESM-1-2-HAM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MPI-ESM1-2-LR</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>MRI-ESM2-0</th>
+      <th>r1i2p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>NorCPM1</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>NorESM2-LM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>NorESM2-MM</th>
+      <th>r1i1p1f1</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>UKESM1-0-LL</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>UKESM1-1-LL</th>
+      <th>r1i1p1f2</th>
+      <th>gn</th>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>At this point, you would be ready to use <code class="docutils literal notranslate"><span class="pre">to_dataset_dict()</span></code> to download and load all datasets into a dictionary for analysis. The point of this notebook however is to expose the search capabilities. It is our goal to make annoying and time-consuming tasks easier by providing you smart interfaces for common operations. Let us <a class="reference external" href="https://github.com/esgf2-us/intake-esgf/issues">know</a> what else is painful for you in locating relevant data for your science.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="intro-search.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to <code class="docutils literal notranslate"><span class="pre">intake-esgf</span></code></p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="rooki.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Compute Demo: Use Rooki to access CMIP6 data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </div>
+          </div>
+        </main>
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+<footer class="footer">
+  <div class="container-fluid m-0 p-0">
+  
+    <div class="footer-item">
+    
+  <div class="container-fluid footer-logos">
+    <div class="container-xl">
+      <div class="row d-flex flex-wrap align-items-center">
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="NCAR" src="../_images/NCAR-contemp-logo-blue.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="Unidata" src="../_images/Unidata_logo_horizontal_1200x300.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="UAlbany" src="../_images/UAlbany-A2-logo-purple-gold.svg" style="width: 100%">
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+  
+    <div class="footer-item">
+    
+    </div>
+  
+    <div class="footer-item">
+      <div class="container-fluid footer-info">
+    <div class="container-xl">
+      <div class="d-flex justify-content-center">
+        <p class="py-1 m-0">
+            &copy;&nbsp;2023.
+        
+          By the <a href="https://esgf.llnl.gov/">ESGF</a> Community.
+        
+          Last updated on 23 April 2024.
+        </p>
+      </div>
+    </div>
+  </div>
+    </div>
+  
+    <div class="footer-item">
+    
+    </div>
+  
+  </div>
+</footer>
+  </body>
+</html>
