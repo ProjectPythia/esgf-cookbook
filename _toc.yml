@@ -8,9 +8,10 @@ parts:
     chapters:
       - file: notebooks/intro-search
       - file: notebooks/complex-search
+      - file: notebooks/rooki
+      - file: notebooks/use-intake-esgf-with-rooki
   - caption: Workflows
     chapters:
-      - file: notebooks/rooki
       - file: notebooks/enso-globus
       - file: notebooks/enso-globus-flow
       - file: notebooks/globus-compute-service-demo
