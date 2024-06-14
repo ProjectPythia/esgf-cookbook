@@ -16,3 +16,4 @@ parts:
       - file: notebooks/enso-globus-flow
       - file: notebooks/globus-compute-service-demo
       - file: notebooks/yearly-average-selection-globus
+      - file: notebooks/rooki_enso_nonlinear
