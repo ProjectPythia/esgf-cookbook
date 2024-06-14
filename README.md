@@ -14,12 +14,12 @@ This cookbook focuses on highlighting analysis recipes, as well as data acccess 
 
 ## Authors
 
-[Max Grover](@mgrover1), [Nathan Collier](@nocollier)
+[Max Grover](@mgrover1), [Nathan Collier](@nocollier), [Carsten Ehbrecht](@cehbrecht), [Jacqueline Nugent](@jacnugent), [Gerardo Rivera Tello](@griverat)
 
 ### Contributors
 
-<a href="https://github.com/esgf2-us/esgf-cookbook/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=esgf2-us/esgf-cookbook" />
+<a href="https://github.com/ProjectPythia/esgf-cookbook/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ProjectPythia/esgf-cookbook" />
 </a>
 
 ## Structure
