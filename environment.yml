@@ -16,6 +16,7 @@ dependencies:
   - globus-compute-endpoint
   - netCDF4
   - xarray
+  - xeofs
   - cf_xarray
   - clisops
   - rooki
