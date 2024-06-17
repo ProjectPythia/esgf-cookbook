@@ -17,4 +17,5 @@ parts:
       - file: notebooks/globus-compute-service-demo
       - file: notebooks/yearly-average-selection-globus
       - file: notebooks/rooki_enso_nonlinear
-      - file: notebooks/ex-regrid-plot
+      - file: notebooks/ex-regrid-plot 
+      - file: notebooks/complex-search2-and-analysis
