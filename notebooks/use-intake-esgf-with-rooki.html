@@ -1570,37 +1570,7 @@ if (window.Jupyter !== undefined) {
 </div>
 <div class="section" id="set-the-index-node-and-search">
 <h3>Set the Index Node and Search<a class="headerlink" href="#set-the-index-node-and-search" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
-<p>We need to turn off the new index nodes (Argonne National Lab (<code class="docutils literal notranslate"><span class="pre">anl-dev</span></code>) and Oak Ridge National Lab (<code class="docutils literal notranslate"><span class="pre">ornl-dev</span></code>)), and turn on the German Climate Computation Center (<code class="docutils literal notranslate"><span class="pre">esgf-data.dkrz.de</span></code>) node.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">intake_esgf</span><span class="o">.</span><span class="n">conf</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>download_db: ~/.config/intake-esgf/download.db
-esg_dataroot:
-- /p/css03/esgf_publish
-- /eagle/projects/ESGF2/esg_dataroot
-- /global/cfs/projectdirs/m3522/cmip6/
-globus_indices:
-  anl-dev: true
-  ornl-dev: true
-local_cache:
-- ~/.esgf/
-logfile: ~/.config/intake-esgf/esgf.log
-solr_indices:
-  esg-dn1.nsc.liu.se: false
-  esgf-data.dkrz.de: false
-  esgf-node.ipsl.upmc.fr: false
-  esgf-node.llnl.gov: false
-  esgf-node.ornl.gov: false
-  esgf.ceda.ac.uk: false
-  esgf.nci.org.au: false
-</pre></div>
-</div>
-</div>
-</div>
+<p>We need to ensure only the Oak Ridge National Lab (ORNL) index node is active, not the Argonne National Laboratory (ANL) node. We can accomplish this using the configuration settings for intake-esgf.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">intake_esgf</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">indices</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;anl-dev&quot;</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span>
