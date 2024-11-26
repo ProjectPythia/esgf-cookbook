@@ -1,0 +1,1134 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complex Searching with intake and analysing employing xarray &#8212; ESGF Cookbook</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-pythia-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Demo: Regridding and Plotting with Rooki and Cartopy" href="ex-regrid-plot.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="132">
+    <div class="container-fluid" id="shim"></div>
+    <div class="container-fluid" id="banner"></div>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="https://projectpythia.org">
+  <img src="../_static/esgf2-us.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class=" collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/esgf2-us/" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/project_pythia" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" rel="noopener" target="_blank" title="YouTube">
+            <span><i class="fab fa-youtube-square"></i></span>
+            <label class="sr-only">YouTube</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    <div class="container-xl">
+      <div class="row">
+        
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   ESGF Cookbook
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preamble
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="how-to-cite.html">
+   How to Cite This Cookbook
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Searching
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro-search.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     intake-esgf
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="complex-search.html">
+   Complex Searching with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     intake-esgf
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rooki.html">
+   Compute Demo: Use Rooki to access CMIP6 data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="use-intake-esgf-with-rooki.html">
+   Using intake-esgf with rooki
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Workflows
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="enso-globus.html">
+   ENSO Calculations using Globus Compute
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="enso-globus-flow.html">
+   ENSO Calculations using Globus Flows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="globus-compute-service-demo.html">
+   ESGF Compute Function Service Demo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="yearly-average-selection-globus.html">
+   Basic Demonstration of Data Reduction Using Globus, Intake-ESGF, and Clisops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rooki_enso_nonlinear.html">
+   Compute Demo: ENSO nonlinearity index with CMIP6 data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ex-regrid-plot.html">
+   Demo: Regridding and Plotting with Rooki and Cartopy
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Complex Searching with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     intake
+    </span>
+   </code>
+   and analysing employing
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     xarray
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by <a href="https://projectpythia.org">Project Pythia</a>.<br><br>
+All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons BY 4.0 (CC BY 4.0)</a>.<br><br>
+
+</div>
+
+</div>
+
+        
+
+        <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main"><div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/complex-search2-and-analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ProjectPythia/esgf-cookbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ProjectPythia/esgf-cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/complex-search2-and-analysis.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ProjectPythia/esgf-cookbook/edit/main/notebooks/complex-search2-and-analysis.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://binder.projectpythia.org/v2/gh/ProjectPythia/esgf-cookbook/main?urlpath=lab/tree/notebooks/complex-search2-and-analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://projectpythia.2i2c.cloud/hub/user-redirect/git-pull?repo=https://github.com/ProjectPythia/esgf-cookbook&urlpath=lab/tree/esgf-cookbook/notebooks/complex-search2-and-analysis.ipynb&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> On this page
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculate-regional-mean-for-each-dataset-and-visualizing-time-series">
+     Calculate regional mean for each dataset and visualizing time series
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#visualizing-the-regional-mean-for-each-dataset">
+       Visualizing the regional mean for each dataset
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculating-annual-mean-for-each-dataset-and-visualizing-time-series">
+     Calculating annual mean for each dataset  and visualizing time series
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#visualizing-the-regional-annual-mean-for-each-dataset">
+       Visualizing the regional annual mean for each dataset
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#visualizing-the-regional-annual-mean-for-each-dataset-in-a-single-panel">
+       Visualizing the regional annual mean for each dataset in a single panel
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#references">
+     References
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+          <div id="main-content" class="row">
+            <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+              
+              <div>
+                
+  <p><a class="reference internal" href="../_images/esgf2-us.png"><img alt="ESGF logo" src="../_images/esgf2-us.png" style="width: 250px;" /></a></img></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="complex-searching-with-intake-and-analysing-employing-xarray">
+<h1>Complex Searching with <code class="docutils literal notranslate"><span class="pre">intake</span></code> and analysing employing <code class="docutils literal notranslate"><span class="pre">xarray</span></code><a class="headerlink" href="#complex-searching-with-intake-and-analysing-employing-xarray" title="Permalink to this headline"><i class="fas fa-link"></i></a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>This tutorial we will present access multiple historical (as an example here) data available and analyze  using <code class="docutils literal notranslate"><span class="pre">intake</span></code>. Put them in a dictionary format employing <code class="docutils literal notranslate"><span class="pre">xarray</span></code> and plotting simple area average time series over a specific region.</p>
+</div>
+<div class="section" id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">intake</span>
+<span class="kn">from</span> <span class="nn">distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">dask</span>
+<span class="n">xr</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="n">display_style</span><span class="o">=</span><span class="s1">&#39;html&#39;</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat_url</span> <span class="o">=</span> <span class="s2">&quot;https://storage.googleapis.com/cmip6/pangeo-cmip6.json&quot;</span>
+<span class="n">col</span> <span class="o">=</span> <span class="n">intake</span><span class="o">.</span><span class="n">open_esm_datastore</span><span class="p">(</span><span class="n">cat_url</span><span class="p">)</span>
+<span class="n">col</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><p><strong>pangeo-cmip6 catalog with 7674 dataset(s) from 514818 asset(s)</strong>:</p> <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>unique</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>activity_id</th>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>institution_id</th>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>source_id</th>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th>experiment_id</th>
+      <td>170</td>
+    </tr>
+    <tr>
+      <th>member_id</th>
+      <td>657</td>
+    </tr>
+    <tr>
+      <th>table_id</th>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>variable_id</th>
+      <td>700</td>
+    </tr>
+    <tr>
+      <th>grid_label</th>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>zstore</th>
+      <td>514818</td>
+    </tr>
+    <tr>
+      <th>dcpp_init_year</th>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>version</th>
+      <td>736</td>
+    </tr>
+    <tr>
+      <th>derived_variable_id</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">experiment_id</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;historical&quot;</span><span class="p">],</span>
+    <span class="n">variable_id</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tas&quot;</span><span class="p">],</span>
+    <span class="n">member_id</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;r1i1p1f1&quot;</span><span class="p">],</span>
+    <span class="n">table_id</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Amon&quot;</span><span class="p">,],</span> 
+    <span class="n">source_id</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;CMCC-ESM2&quot;</span><span class="p">,</span> <span class="s2">&quot;CanESM5&quot;</span><span class="p">,</span> <span class="s2">&quot;CESM2&quot;</span><span class="p">,</span> <span class="s2">&quot;CESM2-FV2&quot;</span><span class="p">,</span> <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span><span class="o">.</span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>activity_id</th>
+      <th>institution_id</th>
+      <th>source_id</th>
+      <th>experiment_id</th>
+      <th>member_id</th>
+      <th>table_id</th>
+      <th>variable_id</th>
+      <th>grid_label</th>
+      <th>zstore</th>
+      <th>dcpp_init_year</th>
+      <th>version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CMIP</td>
+      <td>NCAR</td>
+      <td>CESM2</td>
+      <td>historical</td>
+      <td>r1i1p1f1</td>
+      <td>Amon</td>
+      <td>tas</td>
+      <td>gn</td>
+      <td>gs://cmip6/CMIP6/CMIP/NCAR/CESM2/historical/r1...</td>
+      <td>NaN</td>
+      <td>20190308</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CMIP</td>
+      <td>CCCma</td>
+      <td>CanESM5</td>
+      <td>historical</td>
+      <td>r1i1p1f1</td>
+      <td>Amon</td>
+      <td>tas</td>
+      <td>gn</td>
+      <td>gs://cmip6/CMIP6/CMIP/CCCma/CanESM5/historical...</td>
+      <td>NaN</td>
+      <td>20190429</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CMIP</td>
+      <td>NCAR</td>
+      <td>CESM2-FV2</td>
+      <td>historical</td>
+      <td>r1i1p1f1</td>
+      <td>Amon</td>
+      <td>tas</td>
+      <td>gn</td>
+      <td>gs://cmip6/CMIP6/CMIP/NCAR/CESM2-FV2/historica...</td>
+      <td>NaN</td>
+      <td>20191120</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CMIP</td>
+      <td>CMCC</td>
+      <td>CMCC-ESM2</td>
+      <td>historical</td>
+      <td>r1i1p1f1</td>
+      <td>Amon</td>
+      <td>tas</td>
+      <td>gn</td>
+      <td>gs://cmip6/CMIP6/CMIP/CMCC/CMCC-ESM2/historica...</td>
+      <td>NaN</td>
+      <td>20210114</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dset_dict</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">to_dataset_dict</span><span class="p">(</span><span class="n">zarr_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;consolidated&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">dset_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--&gt; The keys in the returned dictionary of datasets are constructed as follows:
+	&#39;activity_id.institution_id.source_id.experiment_id.table_id.grid_label&#39;
+</pre></div>
+</div>
+<div class="output text_html">
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div><div class="output text_html">
+    <div>
+      <progress value='4' class='' max='4' style='width:300px; height:20px; vertical-align: middle;'></progress>
+      100.00% [4/4 00:09&lt;00:00]
+    </div>
+    </div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;CMIP.CMCC.CMCC-ESM2.historical.Amon.gn&#39;,
+ &#39;CMIP.CCCma.CanESM5.historical.Amon.gn&#39;,
+ &#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;,
+ &#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dset_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="c1"># Sort the dataset by time</span>
+    <span class="n">sorted_dataset</span> <span class="o">=</span> <span class="n">dset_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Subset data for years 1900-2000</span>
+    <span class="n">ds</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">sorted_dataset</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;1900&quot;</span><span class="p">,</span> <span class="s2">&quot;2000&quot;</span><span class="p">))</span>
+        
+    <span class="c1"># Optional: Print a message indicating dataset processing</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing dataset: </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing dataset: CMIP.CMCC.CMCC-ESM2.historical.Amon.gn
+Processing dataset: CMIP.CCCma.CanESM5.historical.Amon.gn
+Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
+Processing dataset: CMIP.NCAR.CESM2.historical.Amon.gn
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">ds</span></code> now contains subset of datasets for each key in dset_dict</strong></p>
+<p><strong>Let’s check ds</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.CMCC.CMCC-ESM2.historical.Amon.gn&#39;: &lt;xarray.Dataset&gt; Size: 268MB
+ Dimensions:         (lat: 192, bnds: 2, lon: 288, member_id: 1,
+                      dcpp_init_year: 1, time: 1212)
+ Coordinates:
+     height          float64 8B ...
+   * lat             (lat) float64 2kB -90.0 -89.06 -88.12 ... 88.12 89.06 90.0
+     lat_bnds        (lat, bnds) float64 3kB dask.array&lt;chunksize=(192, 2), meta=np.ndarray&gt;
+   * lon             (lon) float64 2kB 0.0 1.25 2.5 3.75 ... 356.2 357.5 358.8
+     lon_bnds        (lon, bnds) float64 5kB dask.array&lt;chunksize=(288, 2), meta=np.ndarray&gt;
+   * time            (time) object 10kB 1900-01-16 12:00:00 ... 2000-12-16 12:...
+     time_bnds       (time, bnds) object 19kB dask.array&lt;chunksize=(1212, 2), meta=np.ndarray&gt;
+   * member_id       (member_id) object 8B &#39;r1i1p1f1&#39;
+   * dcpp_init_year  (dcpp_init_year) float64 8B nan
+ Dimensions without coordinates: bnds
+ Data variables:
+     tas             (member_id, dcpp_init_year, time, lat, lon) float32 268MB dask.array&lt;chunksize=(1, 1, 208, 192, 288), meta=np.ndarray&gt;
+ Attributes: (12/64)
+     Conventions:                      CF-1.7 CMIP-6.2
+     activity_id:                      CMIP
+     branch_method:                    standard
+     branch_time_in_child:             0.0
+     branch_time_in_parent:            0.0
+     cmor_version:                     3.6.0
+     ...                               ...
+     intake_esm_attrs:variable_id:     tas
+     intake_esm_attrs:grid_label:      gn
+     intake_esm_attrs:zstore:          gs://cmip6/CMIP6/CMIP/CMCC/CMCC-ESM2/hi...
+     intake_esm_attrs:version:         20210114
+     intake_esm_attrs:_data_format_:   zarr
+     intake_esm_dataset_key:           CMIP.CMCC.CMCC-ESM2.historical.Amon.gn,
+ &#39;CMIP.CCCma.CanESM5.historical.Amon.gn&#39;: &lt;xarray.Dataset&gt; Size: 40MB
+ Dimensions:         (lat: 64, bnds: 2, lon: 128, member_id: 1,
+                      dcpp_init_year: 1, time: 1212)
+ Coordinates:
+     height          float64 8B ...
+   * lat             (lat) float64 512B -87.86 -85.1 -82.31 ... 82.31 85.1 87.86
+     lat_bnds        (lat, bnds) float64 1kB dask.array&lt;chunksize=(64, 2), meta=np.ndarray&gt;
+   * lon             (lon) float64 1kB 0.0 2.812 5.625 ... 351.6 354.4 357.2
+     lon_bnds        (lon, bnds) float64 2kB dask.array&lt;chunksize=(128, 2), meta=np.ndarray&gt;
+   * time            (time) object 10kB 1900-01-16 12:00:00 ... 2000-12-16 12:...
+     time_bnds       (time, bnds) object 19kB dask.array&lt;chunksize=(1212, 2), meta=np.ndarray&gt;
+   * member_id       (member_id) object 8B &#39;r1i1p1f1&#39;
+   * dcpp_init_year  (dcpp_init_year) float64 8B nan
+ Dimensions without coordinates: bnds
+ Data variables:
+     tas             (member_id, dcpp_init_year, time, lat, lon) float32 40MB dask.array&lt;chunksize=(1, 1, 600, 64, 128), meta=np.ndarray&gt;
+ Attributes: (12/69)
+     CCCma_model_hash:                 3dedf95315d603326fde4f5340dc0519d80d10c0
+     CCCma_parent_runid:               rc3-pictrl
+     CCCma_pycmor_hash:                33c30511acc319a98240633965a04ca99c26427e
+     CCCma_runid:                      rc3.1-his01
+     Conventions:                      CF-1.7 CMIP-6.2
+     YMDH_branch_time_in_child:        1850:01:01:00
+     ...                               ...
+     intake_esm_attrs:variable_id:     tas
+     intake_esm_attrs:grid_label:      gn
+     intake_esm_attrs:zstore:          gs://cmip6/CMIP6/CMIP/CCCma/CanESM5/his...
+     intake_esm_attrs:version:         20190429
+     intake_esm_attrs:_data_format_:   zarr
+     intake_esm_dataset_key:           CMIP.CCCma.CanESM5.historical.Amon.gn,
+ &#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.Dataset&gt; Size: 67MB
+ Dimensions:         (lat: 96, nbnd: 2, lon: 144, member_id: 1,
+                      dcpp_init_year: 1, time: 1212)
+ Coordinates:
+   * lat             (lat) float64 768B -90.0 -88.11 -86.21 ... 86.21 88.11 90.0
+     lat_bnds        (lat, nbnd) float64 2kB dask.array&lt;chunksize=(96, 2), meta=np.ndarray&gt;
+   * lon             (lon) float64 1kB 0.0 2.5 5.0 7.5 ... 352.5 355.0 357.5
+     lon_bnds        (lon, nbnd) float64 2kB dask.array&lt;chunksize=(144, 2), meta=np.ndarray&gt;
+   * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
+     time_bnds       (time, nbnd) object 19kB dask.array&lt;chunksize=(1212, 2), meta=np.ndarray&gt;
+   * member_id       (member_id) object 8B &#39;r1i1p1f1&#39;
+   * dcpp_init_year  (dcpp_init_year) float64 8B nan
+ Dimensions without coordinates: nbnd
+ Data variables:
+     tas             (member_id, dcpp_init_year, time, lat, lon) float32 67MB dask.array&lt;chunksize=(1, 1, 390, 96, 144), meta=np.ndarray&gt;
+ Attributes: (12/61)
+     Conventions:                      CF-1.7 CMIP-6.2
+     activity_id:                      CMIP
+     branch_method:                    standard
+     branch_time_in_child:             674885.0
+     branch_time_in_parent:            10950.0
+     case_id:                          1559
+     ...                               ...
+     intake_esm_attrs:variable_id:     tas
+     intake_esm_attrs:grid_label:      gn
+     intake_esm_attrs:zstore:          gs://cmip6/CMIP6/CMIP/NCAR/CESM2-FV2/hi...
+     intake_esm_attrs:version:         20191120
+     intake_esm_attrs:_data_format_:   zarr
+     intake_esm_dataset_key:           CMIP.NCAR.CESM2-FV2.historical.Amon.gn,
+ &#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.Dataset&gt; Size: 268MB
+ Dimensions:         (lat: 192, nbnd: 2, lon: 288, member_id: 1,
+                      dcpp_init_year: 1, time: 1212)
+ Coordinates:
+   * lat             (lat) float64 2kB -90.0 -89.06 -88.12 ... 88.12 89.06 90.0
+     lat_bnds        (lat, nbnd) float32 2kB dask.array&lt;chunksize=(192, 2), meta=np.ndarray&gt;
+   * lon             (lon) float64 2kB 0.0 1.25 2.5 3.75 ... 356.2 357.5 358.8
+     lon_bnds        (lon, nbnd) float32 2kB dask.array&lt;chunksize=(288, 2), meta=np.ndarray&gt;
+   * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
+     time_bnds       (time, nbnd) object 19kB dask.array&lt;chunksize=(1212, 2), meta=np.ndarray&gt;
+   * member_id       (member_id) object 8B &#39;r1i1p1f1&#39;
+   * dcpp_init_year  (dcpp_init_year) float64 8B nan
+ Dimensions without coordinates: nbnd
+ Data variables:
+     tas             (member_id, dcpp_init_year, time, lat, lon) float32 268MB dask.array&lt;chunksize=(1, 1, 600, 192, 288), meta=np.ndarray&gt;
+ Attributes: (12/61)
+     Conventions:                      CF-1.7 CMIP-6.2
+     activity_id:                      CMIP
+     branch_method:                    standard
+     branch_time_in_child:             674885.0
+     branch_time_in_parent:            219000.0
+     case_id:                          15
+     ...                               ...
+     intake_esm_attrs:variable_id:     tas
+     intake_esm_attrs:grid_label:      gn
+     intake_esm_attrs:zstore:          gs://cmip6/CMIP6/CMIP/NCAR/CESM2/histor...
+     intake_esm_attrs:version:         20190308
+     intake_esm_attrs:_data_format_:   zarr
+     intake_esm_dataset_key:           CMIP.NCAR.CESM2.historical.Amon.gn}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="calculate-regional-mean-for-each-dataset-and-visualizing-time-series">
+<h3>Calculate regional mean for each dataset and visualizing time series<a class="headerlink" href="#calculate-regional-mean-for-each-dataset-and-visualizing-time-series" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regn_mean</span> <span class="o">=</span> <span class="p">{}</span> 
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dset_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">regn_mean</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;tas&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lon</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">lat</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regn_mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.CMCC.CMCC-ESM2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 1212)&gt; Size: 5kB
+ dask.array&lt;getitem, shape=(1212,), dtype=float32, chunksize=(404,), chunktype=numpy.ndarray&gt;
+ Coordinates:
+     height          float64 8B ...
+   * time            (time) object 10kB 1900-01-16 12:00:00 ... 2000-12-16 12:...
+     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
+     dcpp_init_year  float64 8B nan,
+ &#39;CMIP.CCCma.CanESM5.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 1212)&gt; Size: 5kB
+ dask.array&lt;getitem, shape=(1212,), dtype=float32, chunksize=(600,), chunktype=numpy.ndarray&gt;
+ Coordinates:
+     height          float64 8B ...
+   * time            (time) object 10kB 1900-01-16 12:00:00 ... 2000-12-16 12:...
+     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
+     dcpp_init_year  float64 8B nan,
+ &#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 1212)&gt; Size: 5kB
+ dask.array&lt;getitem, shape=(1212,), dtype=float32, chunksize=(822,), chunktype=numpy.ndarray&gt;
+ Coordinates:
+   * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
+     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
+     dcpp_init_year  float64 8B nan,
+ &#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 1212)&gt; Size: 5kB
+ dask.array&lt;getitem, shape=(1212,), dtype=float32, chunksize=(600,), chunktype=numpy.ndarray&gt;
+ Coordinates:
+   * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
+     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
+     dcpp_init_year  float64 8B nan}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.weight&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bold&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="visualizing-the-regional-mean-for-each-dataset">
+<h4>Visualizing the regional mean for each dataset<a class="headerlink" href="#visualizing-the-regional-mean-for-each-dataset" title="Permalink to this headline"><i class="fas fa-link"></i></a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">regm</span> <span class="ow">in</span> <span class="n">regn_mean</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">source_id</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">regm</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">source_id</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Surface Air Temperature for </span><span class="si">{</span><span class="n">source_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (K)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e970a2569a4431b3c1d7c876dc8726120800eaa19b8a5a80eb12aa0e5190879d.png" src="../_images/e970a2569a4431b3c1d7c876dc8726120800eaa19b8a5a80eb12aa0e5190879d.png" />
+<img alt="../_images/11ce4be9529782de5d82eea21e456ba00b11652146c5a39020ca82f45fe862ee.png" src="../_images/11ce4be9529782de5d82eea21e456ba00b11652146c5a39020ca82f45fe862ee.png" />
+<img alt="../_images/4bb7bec36824421dfa28a56484101822f5eb48b04d92a430911827300984649e.png" src="../_images/4bb7bec36824421dfa28a56484101822f5eb48b04d92a430911827300984649e.png" />
+<img alt="../_images/2ac551d7ec1a88368ebcdb291deeece4be0b62822e6205d059095e71625371da.png" src="../_images/2ac551d7ec1a88368ebcdb291deeece4be0b62822e6205d059095e71625371da.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="calculating-annual-mean-for-each-dataset-and-visualizing-time-series">
+<h3>Calculating annual mean for each dataset  and visualizing time series<a class="headerlink" href="#calculating-annual-mean-for-each-dataset-and-visualizing-time-series" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">annual_mean</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">regm</span> <span class="ow">in</span> <span class="n">regn_mean</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">annual_mean</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">regm</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">annual_mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.CMCC.CMCC-ESM2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 101)&gt; Size: 404B
+ dask.array&lt;stack, shape=(101,), dtype=float32, chunksize=(1,), chunktype=numpy.ndarray&gt;
+ Coordinates:
+     height          float64 8B ...
+     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
+     dcpp_init_year  float64 8B nan
+   * time            (time) object 808B 1900-12-31 00:00:00 ... 2000-12-31 00:...,
+ &#39;CMIP.CCCma.CanESM5.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 101)&gt; Size: 404B
+ dask.array&lt;stack, shape=(101,), dtype=float32, chunksize=(1,), chunktype=numpy.ndarray&gt;
+ Coordinates:
+     height          float64 8B ...
+     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
+     dcpp_init_year  float64 8B nan
+   * time            (time) object 808B 1900-12-31 00:00:00 ... 2000-12-31 00:...,
+ &#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 101)&gt; Size: 404B
+ dask.array&lt;stack, shape=(101,), dtype=float32, chunksize=(1,), chunktype=numpy.ndarray&gt;
+ Coordinates:
+     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
+     dcpp_init_year  float64 8B nan
+   * time            (time) object 808B 1900-12-31 00:00:00 ... 2000-12-31 00:...,
+ &#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 101)&gt; Size: 404B
+ dask.array&lt;stack, shape=(101,), dtype=float32, chunksize=(1,), chunktype=numpy.ndarray&gt;
+ Coordinates:
+     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
+     dcpp_init_year  float64 8B nan
+   * time            (time) object 808B 1900-12-31 00:00:00 ... 2000-12-31 00:...}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="visualizing-the-regional-annual-mean-for-each-dataset">
+<h4>Visualizing the regional annual mean for each dataset<a class="headerlink" href="#visualizing-the-regional-annual-mean-for-each-dataset" title="Permalink to this headline"><i class="fas fa-link"></i></a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">anmn</span> <span class="ow">in</span> <span class="n">annual_mean</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">source_id</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">anmn</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">source_id</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Annual Surface Air Temperature for </span><span class="si">{</span><span class="n">source_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (K)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/975c83af1ec681a529094d8d0f5469a518d0810b6fa13014e9cb4f701fe62586.png" src="../_images/975c83af1ec681a529094d8d0f5469a518d0810b6fa13014e9cb4f701fe62586.png" />
+<img alt="../_images/05d92e31084720c99e3f58aff5b4ca67e721485b71c7291060caaa9864150031.png" src="../_images/05d92e31084720c99e3f58aff5b4ca67e721485b71c7291060caaa9864150031.png" />
+<img alt="../_images/e2e659e7de86a16a1d10091d3a300a40b575f545bb9976701301149e41835ae5.png" src="../_images/e2e659e7de86a16a1d10091d3a300a40b575f545bb9976701301149e41835ae5.png" />
+<img alt="../_images/0485b060d451bdb7d8b85c05791085b5f92e2fb6dddb6092f0e3ab999d4add10.png" src="../_images/0485b060d451bdb7d8b85c05791085b5f92e2fb6dddb6092f0e3ab999d4add10.png" />
+</div>
+</div>
+</div>
+<div class="section" id="visualizing-the-regional-annual-mean-for-each-dataset-in-a-single-panel">
+<h4>Visualizing the regional annual mean for each dataset in a single panel<a class="headerlink" href="#visualizing-the-regional-annual-mean-for-each-dataset-in-a-single-panel" title="Permalink to this headline"><i class="fas fa-link"></i></a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plotting the annual mean for each dataset on the same plot</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">annm</span> <span class="ow">in</span> <span class="n">annual_mean</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">source_id</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">annm</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">source_id</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Annual Mean Surface Air Temperature (Regional)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (K)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f617aef1ccd8c6d9fb971fed67b09aac43fd3696e631494599107ae786a81614.png" src="../_images/f617aef1ccd8c6d9fb971fed67b09aac43fd3696e631494599107ae786a81614.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<p><a class="reference external" href="https://projectpythia.org/cmip6-cookbook/notebooks/example-workflows/gmst.html">Global Mean Surface Temperature</a></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="ex-regrid-plot.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Demo: Regridding and Plotting with Rooki and Cartopy</p>
+        </div>
+    </a>
+</div>
+            </div>
+          </div>
+        </main>
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+<footer class="footer">
+  <div class="container-fluid m-0 p-0">
+  
+    <div class="footer-item">
+    
+  <div class="container-fluid footer-logos">
+    <div class="container-xl">
+      <div class="row d-flex flex-wrap align-items-center">
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="NCAR" src="../_images/NCAR-contemp-logo-blue.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="Unidata" src="../_images/Unidata_logo_horizontal_1200x300.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="UAlbany" src="../_images/UAlbany-A2-logo-purple-gold.svg" style="width: 100%">
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+  
+    <div class="footer-item">
+    
+    </div>
+  
+    <div class="footer-item">
+      <div class="container-fluid footer-info">
+    <div class="container-xl">
+      <div class="d-flex justify-content-center">
+        <p class="py-1 m-0">
+            &copy;&nbsp;2023.
+        
+          By the <a href="https://esgf.llnl.gov/">ESGF</a> Community.
+        
+          Last updated on 26 November 2024.
+        </p>
+      </div>
+    </div>
+  </div>
+    </div>
+  
+    <div class="footer-item">
+    
+    </div>
+  
+  </div>
+</footer>
+  </body>
+</html>
