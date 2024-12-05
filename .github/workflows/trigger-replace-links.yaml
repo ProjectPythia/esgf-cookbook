@@ -3,6 +3,8 @@ name: trigger-replace-links
 on:
   workflow_dispatch:
 
+permissions: write-all
+
 jobs:
   build:
     runs-on: ubuntu-latest
