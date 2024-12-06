@@ -21,7 +21,7 @@ dependencies:
   - clisops
   - rooki
   - geoviews
-  - xesmf
+  - xesmf==0.8.2
   - dask
   - pip
   - intake
