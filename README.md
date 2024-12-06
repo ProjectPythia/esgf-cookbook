@@ -4,7 +4,7 @@
 
 [![nightly-build](https://github.com/ProjectPythia/esgf-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml)
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/esgf-cookbook/main?labpath=notebooks)
-[![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
+[![DOI](https://zenodo.org/badge/721319801.svg)](https://doi.org/10.5281/zenodo.11663067)
 
 This Project Pythia Cookbook covers how to access and analyze datasets that can be accessed from Earth System Grid Federation (ESGF) cyberinfrastructure.
 
