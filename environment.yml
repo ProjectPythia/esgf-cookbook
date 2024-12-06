@@ -21,10 +21,13 @@ dependencies:
   - clisops
   - rooki
   - geoviews
+  - xesmf==0.8.2
   - dask
   - pip
   - intake
   - intake-esm
+  - gcsfs
+  - nc-time-axis
   - pip:
       - sphinx-pythia-theme
       # The balance of this environment file pins several libraries in order for
