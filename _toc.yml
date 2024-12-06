@@ -13,5 +13,4 @@ parts:
   - caption: Workflows
     chapters:
       - file: notebooks/rooki_enso_nonlinear
-      - file: notebooks/ex-regrid-plot 
-      - file: notebooks/complex-search2-and-analysis
+      - file: notebooks/ex-regrid-plot
