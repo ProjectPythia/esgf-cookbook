@@ -672,10 +672,10 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
       <progress value='4' class='' max='4' style='width:300px; height:20px; vertical-align: middle;'></progress>
       100.00% [4/4 00:16&lt;00:00]
     </div>
-    </div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;,
- &#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;,
+    </div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;,
  &#39;CMIP.CCCma.CanESM5.historical.Amon.gn&#39;,
- &#39;CMIP.CMCC.CMCC-ESM2.historical.Amon.gn&#39;]
+ &#39;CMIP.CMCC.CMCC-ESM2.historical.Amon.gn&#39;,
+ &#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;]
 </pre></div>
 </div>
 </div>
@@ -697,10 +697,10 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing dataset: CMIP.NCAR.CESM2.historical.Amon.gn
-Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
 Processing dataset: CMIP.CCCma.CanESM5.historical.Amon.gn
 Processing dataset: CMIP.CMCC.CMCC-ESM2.historical.Amon.gn
+Processing dataset: CMIP.NCAR.CESM2.historical.Amon.gn
 </pre></div>
 </div>
 </div>
@@ -714,36 +714,7 @@ Processing dataset: CMIP.CMCC.CMCC-ESM2.historical.Amon.gn
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.Dataset&gt; Size: 268MB
- Dimensions:         (lat: 192, nbnd: 2, lon: 288, member_id: 1,
-                      dcpp_init_year: 1, time: 1212)
- Coordinates:
-   * lat             (lat) float64 2kB -90.0 -89.06 -88.12 ... 88.12 89.06 90.0
-     lat_bnds        (lat, nbnd) float32 2kB dask.array&lt;chunksize=(192, 2), meta=np.ndarray&gt;
-   * lon             (lon) float64 2kB 0.0 1.25 2.5 3.75 ... 356.2 357.5 358.8
-     lon_bnds        (lon, nbnd) float32 2kB dask.array&lt;chunksize=(288, 2), meta=np.ndarray&gt;
-   * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
-     time_bnds       (time, nbnd) object 19kB dask.array&lt;chunksize=(1212, 2), meta=np.ndarray&gt;
-   * member_id       (member_id) object 8B &#39;r1i1p1f1&#39;
-   * dcpp_init_year  (dcpp_init_year) float64 8B nan
- Dimensions without coordinates: nbnd
- Data variables:
-     tas             (member_id, dcpp_init_year, time, lat, lon) float32 268MB dask.array&lt;chunksize=(1, 1, 600, 192, 288), meta=np.ndarray&gt;
- Attributes: (12/61)
-     Conventions:                      CF-1.7 CMIP-6.2
-     activity_id:                      CMIP
-     branch_method:                    standard
-     branch_time_in_child:             674885.0
-     branch_time_in_parent:            219000.0
-     case_id:                          15
-     ...                               ...
-     intake_esm_attrs:variable_id:     tas
-     intake_esm_attrs:grid_label:      gn
-     intake_esm_attrs:zstore:          gs://cmip6/CMIP6/CMIP/NCAR/CESM2/histor...
-     intake_esm_attrs:version:         20190308
-     intake_esm_attrs:_data_format_:   zarr
-     intake_esm_dataset_key:           CMIP.NCAR.CESM2.historical.Amon.gn,
- &#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.Dataset&gt; Size: 67MB
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.Dataset&gt; Size: 67MB
  Dimensions:         (lat: 96, nbnd: 2, lon: 144, member_id: 1,
                       dcpp_init_year: 1, time: 1212)
  Coordinates:
@@ -831,7 +802,36 @@ Processing dataset: CMIP.CMCC.CMCC-ESM2.historical.Amon.gn
      intake_esm_attrs:zstore:          gs://cmip6/CMIP6/CMIP/CMCC/CMCC-ESM2/hi...
      intake_esm_attrs:version:         20210114
      intake_esm_attrs:_data_format_:   zarr
-     intake_esm_dataset_key:           CMIP.CMCC.CMCC-ESM2.historical.Amon.gn}
+     intake_esm_dataset_key:           CMIP.CMCC.CMCC-ESM2.historical.Amon.gn,
+ &#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.Dataset&gt; Size: 268MB
+ Dimensions:         (lat: 192, nbnd: 2, lon: 288, member_id: 1,
+                      dcpp_init_year: 1, time: 1212)
+ Coordinates:
+   * lat             (lat) float64 2kB -90.0 -89.06 -88.12 ... 88.12 89.06 90.0
+     lat_bnds        (lat, nbnd) float32 2kB dask.array&lt;chunksize=(192, 2), meta=np.ndarray&gt;
+   * lon             (lon) float64 2kB 0.0 1.25 2.5 3.75 ... 356.2 357.5 358.8
+     lon_bnds        (lon, nbnd) float32 2kB dask.array&lt;chunksize=(288, 2), meta=np.ndarray&gt;
+   * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
+     time_bnds       (time, nbnd) object 19kB dask.array&lt;chunksize=(1212, 2), meta=np.ndarray&gt;
+   * member_id       (member_id) object 8B &#39;r1i1p1f1&#39;
+   * dcpp_init_year  (dcpp_init_year) float64 8B nan
+ Dimensions without coordinates: nbnd
+ Data variables:
+     tas             (member_id, dcpp_init_year, time, lat, lon) float32 268MB dask.array&lt;chunksize=(1, 1, 600, 192, 288), meta=np.ndarray&gt;
+ Attributes: (12/61)
+     Conventions:                      CF-1.7 CMIP-6.2
+     activity_id:                      CMIP
+     branch_method:                    standard
+     branch_time_in_child:             674885.0
+     branch_time_in_parent:            219000.0
+     case_id:                          15
+     ...                               ...
+     intake_esm_attrs:variable_id:     tas
+     intake_esm_attrs:grid_label:      gn
+     intake_esm_attrs:zstore:          gs://cmip6/CMIP6/CMIP/NCAR/CESM2/histor...
+     intake_esm_attrs:version:         20190308
+     intake_esm_attrs:_data_format_:   zarr
+     intake_esm_dataset_key:           CMIP.NCAR.CESM2.historical.Amon.gn}
 </pre></div>
 </div>
 </div>
@@ -854,13 +854,7 @@ Processing dataset: CMIP.CMCC.CMCC-ESM2.historical.Amon.gn
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 1212)&gt; Size: 5kB
- dask.array&lt;getitem, shape=(1212,), dtype=float32, chunksize=(600,), chunktype=numpy.ndarray&gt;
- Coordinates:
-   * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
-     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
-     dcpp_init_year  float64 8B nan,
- &#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 1212)&gt; Size: 5kB
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 1212)&gt; Size: 5kB
  dask.array&lt;getitem, shape=(1212,), dtype=float32, chunksize=(822,), chunktype=numpy.ndarray&gt;
  Coordinates:
    * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
@@ -878,6 +872,12 @@ Processing dataset: CMIP.CMCC.CMCC-ESM2.historical.Amon.gn
  Coordinates:
      height          float64 8B ...
    * time            (time) object 10kB 1900-01-16 12:00:00 ... 2000-12-16 12:...
+     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
+     dcpp_init_year  float64 8B nan,
+ &#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 1212)&gt; Size: 5kB
+ dask.array&lt;getitem, shape=(1212,), dtype=float32, chunksize=(600,), chunktype=numpy.ndarray&gt;
+ Coordinates:
+   * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
      member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
      dcpp_init_year  float64 8B nan}
 </pre></div>
@@ -910,10 +910,10 @@ Processing dataset: CMIP.CMCC.CMCC-ESM2.historical.Amon.gn
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/42d2f00c2d251e8789bae15fb6ee226b2af3c5ae05da4191a80ca957a8d8c5d7.png" src="../_images/42d2f00c2d251e8789bae15fb6ee226b2af3c5ae05da4191a80ca957a8d8c5d7.png" />
 <img alt="../_images/0492a9a41e7992e2c95ccde22e6b1633c78de45badf384569427a95d7c7a45c1.png" src="../_images/0492a9a41e7992e2c95ccde22e6b1633c78de45badf384569427a95d7c7a45c1.png" />
 <img alt="../_images/d2603de7c91601f713479dff166d5dd452e938d90646dc59d9ea829aa0f61f76.png" src="../_images/d2603de7c91601f713479dff166d5dd452e938d90646dc59d9ea829aa0f61f76.png" />
 <img alt="../_images/81786a97219b6263590c9223c9352b2d9dee861d8125b617b3f9535563eff961.png" src="../_images/81786a97219b6263590c9223c9352b2d9dee861d8125b617b3f9535563eff961.png" />
+<img alt="../_images/42d2f00c2d251e8789bae15fb6ee226b2af3c5ae05da4191a80ca957a8d8c5d7.png" src="../_images/42d2f00c2d251e8789bae15fb6ee226b2af3c5ae05da4191a80ca957a8d8c5d7.png" />
 </div>
 </div>
 </div>
@@ -936,13 +936,7 @@ Processing dataset: CMIP.CMCC.CMCC-ESM2.historical.Amon.gn
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 101)&gt; Size: 404B
- dask.array&lt;stack, shape=(101,), dtype=float32, chunksize=(1,), chunktype=numpy.ndarray&gt;
- Coordinates:
-     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
-     dcpp_init_year  float64 8B nan
-   * time            (time) object 808B 1900-12-31 00:00:00 ... 2000-12-31 00:...,
- &#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 101)&gt; Size: 404B
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 101)&gt; Size: 404B
  dask.array&lt;stack, shape=(101,), dtype=float32, chunksize=(1,), chunktype=numpy.ndarray&gt;
  Coordinates:
      member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
@@ -959,6 +953,12 @@ Processing dataset: CMIP.CMCC.CMCC-ESM2.historical.Amon.gn
  dask.array&lt;stack, shape=(101,), dtype=float32, chunksize=(1,), chunktype=numpy.ndarray&gt;
  Coordinates:
      height          float64 8B ...
+     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
+     dcpp_init_year  float64 8B nan
+   * time            (time) object 808B 1900-12-31 00:00:00 ... 2000-12-31 00:...,
+ &#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 101)&gt; Size: 404B
+ dask.array&lt;stack, shape=(101,), dtype=float32, chunksize=(1,), chunktype=numpy.ndarray&gt;
+ Coordinates:
      member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
      dcpp_init_year  float64 8B nan
    * time            (time) object 808B 1900-12-31 00:00:00 ... 2000-12-31 00:...}
@@ -982,10 +982,10 @@ Processing dataset: CMIP.CMCC.CMCC-ESM2.historical.Amon.gn
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/77167b3e0d14756e68a4b1777e6438369a87b7b4567e84cea02d2bc4f04cea4c.png" src="../_images/77167b3e0d14756e68a4b1777e6438369a87b7b4567e84cea02d2bc4f04cea4c.png" />
 <img alt="../_images/3a46bc498d8a90e3d61f05c6c4c47259d8ce45feefbc3dc43a011f22520a0494.png" src="../_images/3a46bc498d8a90e3d61f05c6c4c47259d8ce45feefbc3dc43a011f22520a0494.png" />
 <img alt="../_images/dea4a095c49de2005fa504f232b7426b742b37890411b7cd60da5e0b1c3c862a.png" src="../_images/dea4a095c49de2005fa504f232b7426b742b37890411b7cd60da5e0b1c3c862a.png" />
 <img alt="../_images/5ae663dc35b40069de3da72a99322c1f3983cd894cc11903a1f35941510ef5b3.png" src="../_images/5ae663dc35b40069de3da72a99322c1f3983cd894cc11903a1f35941510ef5b3.png" />
+<img alt="../_images/77167b3e0d14756e68a4b1777e6438369a87b7b4567e84cea02d2bc4f04cea4c.png" src="../_images/77167b3e0d14756e68a4b1777e6438369a87b7b4567e84cea02d2bc4f04cea4c.png" />
 </div>
 </div>
 </div>
@@ -1010,7 +1010,7 @@ Processing dataset: CMIP.CMCC.CMCC-ESM2.historical.Amon.gn
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d803e543c30a5b13e3bb16f5e9379fad6e2cb4a4cb822b7bbe2255210f7af889.png" src="../_images/d803e543c30a5b13e3bb16f5e9379fad6e2cb4a4cb822b7bbe2255210f7af889.png" />
+<img alt="../_images/9540b871ac331d513e502f3a4cbb5d59437d28faa880bb0f29df0bec5b0db6ce.png" src="../_images/9540b871ac331d513e502f3a4cbb5d59437d28faa880bb0f29df0bec5b0db6ce.png" />
 </div>
 </div>
 </div>
