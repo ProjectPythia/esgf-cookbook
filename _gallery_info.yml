@@ -1,6 +1,10 @@
-thumbnail: thumbnail.png
+thumbnail: https://projectpythia.org/esgf-cookbook/_images/esgf2-us.png
 tags:
   domains:
-    - sampledomain
+    - Climate
+    - Climate Model
+    - Intake
+    - Data Access
   packages:
-    - samplepackage
+    - Xarray
+    - Intake-esgf
