@@ -28,6 +28,7 @@ dependencies:
   - intake-esm
   - gcsfs
   - nc-time-axis
+  - ipywidgets
   - pip:
       - sphinx-pythia-theme
       # The balance of this environment file pins several libraries in order for
