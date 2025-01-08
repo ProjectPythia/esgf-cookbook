@@ -34,12 +34,12 @@ Scientific workflows utilizing data accessed from ESGF.
 
 ## Running the Notebooks
 
-You can either run the notebook using [the NIMBUS Binder](https://binder-nimbus.llnl.gov/) or on your local machine.
+You can either run the notebook using [the NIMBUS Juptyerhub](https://nimbus.llnl.gov) or on your local machine.
 
 ### Running on Binder
 
 The simplest way to interact with a Jupyter Notebook is through
-[the NIMBUS Binder](https://binder-nimbus.llnl.gov/), which enables the execution of a
+[the NIMBUS Juptyerhub](https://nimbus.llnl.gov), which enables the execution of a
 [Jupyter Book](https://jupyterbook.org) in the cloud-like infrastructure. The details of how this works are not
 important for now. All you need to know is how to launch a Pythia
 Cookbooks chapter via Binder. Simply navigate your mouse to

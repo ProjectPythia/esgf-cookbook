@@ -436,14 +436,14 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <h2>Imports<a class="headerlink" href="#imports" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">import</span> <span class="nn">intake</span>
-<span class="kn">from</span> <span class="nn">distributed</span> <span class="kn">import</span> <span class="n">Client</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">import</span> <span class="nn">dask</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">intake</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">distributed</span><span class="w"> </span><span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dask</span>
 <span class="n">xr</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="n">display_style</span><span class="o">=</span><span class="s1">&#39;html&#39;</span><span class="p">)</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 </pre></div>
@@ -677,10 +677,10 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
       <progress value='4' class='' max='4' style='width:300px; height:20px; vertical-align: middle;'></progress>
       100.00% [4/4 00:16&lt;00:00]
     </div>
-    </div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;,
+    </div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;,
  &#39;CMIP.CCCma.CanESM5.historical.Amon.gn&#39;,
- &#39;CMIP.CMCC.CMCC-ESM2.historical.Amon.gn&#39;,
- &#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;]
+ &#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;,
+ &#39;CMIP.CMCC.CMCC-ESM2.historical.Amon.gn&#39;]
 </pre></div>
 </div>
 </div>
@@ -702,10 +702,10 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing dataset: CMIP.NCAR.CESM2.historical.Amon.gn
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
 Processing dataset: CMIP.CCCma.CanESM5.historical.Amon.gn
+Processing dataset: CMIP.NCAR.CESM2.historical.Amon.gn
 Processing dataset: CMIP.CMCC.CMCC-ESM2.historical.Amon.gn
-Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
 </pre></div>
 </div>
 </div>
@@ -719,35 +719,35 @@ Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.Dataset&gt; Size: 268MB
- Dimensions:         (lat: 192, nbnd: 2, lon: 288, member_id: 1,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.Dataset&gt; Size: 67MB
+ Dimensions:         (lat: 96, nbnd: 2, lon: 144, member_id: 1,
                       dcpp_init_year: 1, time: 1212)
  Coordinates:
-   * lat             (lat) float64 2kB -90.0 -89.06 -88.12 ... 88.12 89.06 90.0
-     lat_bnds        (lat, nbnd) float32 2kB dask.array&lt;chunksize=(192, 2), meta=np.ndarray&gt;
-   * lon             (lon) float64 2kB 0.0 1.25 2.5 3.75 ... 356.2 357.5 358.8
-     lon_bnds        (lon, nbnd) float32 2kB dask.array&lt;chunksize=(288, 2), meta=np.ndarray&gt;
+   * lat             (lat) float64 768B -90.0 -88.11 -86.21 ... 86.21 88.11 90.0
+     lat_bnds        (lat, nbnd) float64 2kB dask.array&lt;chunksize=(96, 2), meta=np.ndarray&gt;
+   * lon             (lon) float64 1kB 0.0 2.5 5.0 7.5 ... 352.5 355.0 357.5
+     lon_bnds        (lon, nbnd) float64 2kB dask.array&lt;chunksize=(144, 2), meta=np.ndarray&gt;
    * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
      time_bnds       (time, nbnd) object 19kB dask.array&lt;chunksize=(1212, 2), meta=np.ndarray&gt;
    * member_id       (member_id) object 8B &#39;r1i1p1f1&#39;
    * dcpp_init_year  (dcpp_init_year) float64 8B nan
  Dimensions without coordinates: nbnd
  Data variables:
-     tas             (member_id, dcpp_init_year, time, lat, lon) float32 268MB dask.array&lt;chunksize=(1, 1, 600, 192, 288), meta=np.ndarray&gt;
+     tas             (member_id, dcpp_init_year, time, lat, lon) float32 67MB dask.array&lt;chunksize=(1, 1, 390, 96, 144), meta=np.ndarray&gt;
  Attributes: (12/61)
      Conventions:                      CF-1.7 CMIP-6.2
      activity_id:                      CMIP
      branch_method:                    standard
      branch_time_in_child:             674885.0
-     branch_time_in_parent:            219000.0
-     case_id:                          15
+     branch_time_in_parent:            10950.0
+     case_id:                          1559
      ...                               ...
      intake_esm_attrs:variable_id:     tas
      intake_esm_attrs:grid_label:      gn
-     intake_esm_attrs:zstore:          gs://cmip6/CMIP6/CMIP/NCAR/CESM2/histor...
-     intake_esm_attrs:version:         20190308
+     intake_esm_attrs:zstore:          gs://cmip6/CMIP6/CMIP/NCAR/CESM2-FV2/hi...
+     intake_esm_attrs:version:         20191120
      intake_esm_attrs:_data_format_:   zarr
-     intake_esm_dataset_key:           CMIP.NCAR.CESM2.historical.Amon.gn,
+     intake_esm_dataset_key:           CMIP.NCAR.CESM2-FV2.historical.Amon.gn,
  &#39;CMIP.CCCma.CanESM5.historical.Amon.gn&#39;: &lt;xarray.Dataset&gt; Size: 40MB
  Dimensions:         (lat: 64, bnds: 2, lon: 128, member_id: 1,
                       dcpp_init_year: 1, time: 1212)
@@ -778,6 +778,35 @@ Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
      intake_esm_attrs:version:         20190429
      intake_esm_attrs:_data_format_:   zarr
      intake_esm_dataset_key:           CMIP.CCCma.CanESM5.historical.Amon.gn,
+ &#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.Dataset&gt; Size: 268MB
+ Dimensions:         (lat: 192, nbnd: 2, lon: 288, member_id: 1,
+                      dcpp_init_year: 1, time: 1212)
+ Coordinates:
+   * lat             (lat) float64 2kB -90.0 -89.06 -88.12 ... 88.12 89.06 90.0
+     lat_bnds        (lat, nbnd) float32 2kB dask.array&lt;chunksize=(192, 2), meta=np.ndarray&gt;
+   * lon             (lon) float64 2kB 0.0 1.25 2.5 3.75 ... 356.2 357.5 358.8
+     lon_bnds        (lon, nbnd) float32 2kB dask.array&lt;chunksize=(288, 2), meta=np.ndarray&gt;
+   * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
+     time_bnds       (time, nbnd) object 19kB dask.array&lt;chunksize=(1212, 2), meta=np.ndarray&gt;
+   * member_id       (member_id) object 8B &#39;r1i1p1f1&#39;
+   * dcpp_init_year  (dcpp_init_year) float64 8B nan
+ Dimensions without coordinates: nbnd
+ Data variables:
+     tas             (member_id, dcpp_init_year, time, lat, lon) float32 268MB dask.array&lt;chunksize=(1, 1, 600, 192, 288), meta=np.ndarray&gt;
+ Attributes: (12/61)
+     Conventions:                      CF-1.7 CMIP-6.2
+     activity_id:                      CMIP
+     branch_method:                    standard
+     branch_time_in_child:             674885.0
+     branch_time_in_parent:            219000.0
+     case_id:                          15
+     ...                               ...
+     intake_esm_attrs:variable_id:     tas
+     intake_esm_attrs:grid_label:      gn
+     intake_esm_attrs:zstore:          gs://cmip6/CMIP6/CMIP/NCAR/CESM2/histor...
+     intake_esm_attrs:version:         20190308
+     intake_esm_attrs:_data_format_:   zarr
+     intake_esm_dataset_key:           CMIP.NCAR.CESM2.historical.Amon.gn,
  &#39;CMIP.CMCC.CMCC-ESM2.historical.Amon.gn&#39;: &lt;xarray.Dataset&gt; Size: 268MB
  Dimensions:         (lat: 192, bnds: 2, lon: 288, member_id: 1,
                       dcpp_init_year: 1, time: 1212)
@@ -807,36 +836,7 @@ Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
      intake_esm_attrs:zstore:          gs://cmip6/CMIP6/CMIP/CMCC/CMCC-ESM2/hi...
      intake_esm_attrs:version:         20210114
      intake_esm_attrs:_data_format_:   zarr
-     intake_esm_dataset_key:           CMIP.CMCC.CMCC-ESM2.historical.Amon.gn,
- &#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.Dataset&gt; Size: 67MB
- Dimensions:         (lat: 96, nbnd: 2, lon: 144, member_id: 1,
-                      dcpp_init_year: 1, time: 1212)
- Coordinates:
-   * lat             (lat) float64 768B -90.0 -88.11 -86.21 ... 86.21 88.11 90.0
-     lat_bnds        (lat, nbnd) float64 2kB dask.array&lt;chunksize=(96, 2), meta=np.ndarray&gt;
-   * lon             (lon) float64 1kB 0.0 2.5 5.0 7.5 ... 352.5 355.0 357.5
-     lon_bnds        (lon, nbnd) float64 2kB dask.array&lt;chunksize=(144, 2), meta=np.ndarray&gt;
-   * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
-     time_bnds       (time, nbnd) object 19kB dask.array&lt;chunksize=(1212, 2), meta=np.ndarray&gt;
-   * member_id       (member_id) object 8B &#39;r1i1p1f1&#39;
-   * dcpp_init_year  (dcpp_init_year) float64 8B nan
- Dimensions without coordinates: nbnd
- Data variables:
-     tas             (member_id, dcpp_init_year, time, lat, lon) float32 67MB dask.array&lt;chunksize=(1, 1, 390, 96, 144), meta=np.ndarray&gt;
- Attributes: (12/61)
-     Conventions:                      CF-1.7 CMIP-6.2
-     activity_id:                      CMIP
-     branch_method:                    standard
-     branch_time_in_child:             674885.0
-     branch_time_in_parent:            10950.0
-     case_id:                          1559
-     ...                               ...
-     intake_esm_attrs:variable_id:     tas
-     intake_esm_attrs:grid_label:      gn
-     intake_esm_attrs:zstore:          gs://cmip6/CMIP6/CMIP/NCAR/CESM2-FV2/hi...
-     intake_esm_attrs:version:         20191120
-     intake_esm_attrs:_data_format_:   zarr
-     intake_esm_dataset_key:           CMIP.NCAR.CESM2-FV2.historical.Amon.gn}
+     intake_esm_dataset_key:           CMIP.CMCC.CMCC-ESM2.historical.Amon.gn}
 </pre></div>
 </div>
 </div>
@@ -859,8 +859,8 @@ Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 1212)&gt; Size: 5kB
- dask.array&lt;getitem, shape=(1212,), dtype=float32, chunksize=(600,), chunktype=numpy.ndarray&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 1212)&gt; Size: 5kB
+ dask.array&lt;getitem, shape=(1212,), dtype=float32, chunksize=(822,), chunktype=numpy.ndarray&gt;
  Coordinates:
    * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
      member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
@@ -872,17 +872,17 @@ Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
    * time            (time) object 10kB 1900-01-16 12:00:00 ... 2000-12-16 12:...
      member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
      dcpp_init_year  float64 8B nan,
+ &#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 1212)&gt; Size: 5kB
+ dask.array&lt;getitem, shape=(1212,), dtype=float32, chunksize=(600,), chunktype=numpy.ndarray&gt;
+ Coordinates:
+   * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
+     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
+     dcpp_init_year  float64 8B nan,
  &#39;CMIP.CMCC.CMCC-ESM2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 1212)&gt; Size: 5kB
  dask.array&lt;getitem, shape=(1212,), dtype=float32, chunksize=(404,), chunktype=numpy.ndarray&gt;
  Coordinates:
      height          float64 8B ...
    * time            (time) object 10kB 1900-01-16 12:00:00 ... 2000-12-16 12:...
-     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
-     dcpp_init_year  float64 8B nan,
- &#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 1212)&gt; Size: 5kB
- dask.array&lt;getitem, shape=(1212,), dtype=float32, chunksize=(822,), chunktype=numpy.ndarray&gt;
- Coordinates:
-   * time            (time) object 10kB 1900-01-15 12:00:00 ... 2000-12-15 12:...
      member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
      dcpp_init_year  float64 8B nan}
 </pre></div>
@@ -915,10 +915,10 @@ Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5808494c25fd412f677c3b813bad7aa21c31475308a20eafd84a55486b115e80.png" src="../_images/5808494c25fd412f677c3b813bad7aa21c31475308a20eafd84a55486b115e80.png" />
-<img alt="../_images/1c5d9e278bc0fc3fe32c19430fdb23450293a40ab751492ff79715c3bad935bd.png" src="../_images/1c5d9e278bc0fc3fe32c19430fdb23450293a40ab751492ff79715c3bad935bd.png" />
-<img alt="../_images/c11fea2b54b611e1f8029f0ec5c4f9110be183e22caeb46954a0eef12274ffb1.png" src="../_images/c11fea2b54b611e1f8029f0ec5c4f9110be183e22caeb46954a0eef12274ffb1.png" />
 <img alt="../_images/84d006b6aeb9ef5ce09f8df321b4ef9ce1083b5455589b7196d442b38c53cf7e.png" src="../_images/84d006b6aeb9ef5ce09f8df321b4ef9ce1083b5455589b7196d442b38c53cf7e.png" />
+<img alt="../_images/1c5d9e278bc0fc3fe32c19430fdb23450293a40ab751492ff79715c3bad935bd.png" src="../_images/1c5d9e278bc0fc3fe32c19430fdb23450293a40ab751492ff79715c3bad935bd.png" />
+<img alt="../_images/5808494c25fd412f677c3b813bad7aa21c31475308a20eafd84a55486b115e80.png" src="../_images/5808494c25fd412f677c3b813bad7aa21c31475308a20eafd84a55486b115e80.png" />
+<img alt="../_images/c11fea2b54b611e1f8029f0ec5c4f9110be183e22caeb46954a0eef12274ffb1.png" src="../_images/c11fea2b54b611e1f8029f0ec5c4f9110be183e22caeb46954a0eef12274ffb1.png" />
 </div>
 </div>
 </div>
@@ -941,7 +941,7 @@ Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 101)&gt; Size: 404B
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 101)&gt; Size: 404B
  dask.array&lt;stack, shape=(101,), dtype=float32, chunksize=(1,), chunktype=numpy.ndarray&gt;
  Coordinates:
      member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
@@ -954,16 +954,16 @@ Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
      member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
      dcpp_init_year  float64 8B nan
    * time            (time) object 808B 1900-12-31 00:00:00 ... 2000-12-31 00:...,
+ &#39;CMIP.NCAR.CESM2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 101)&gt; Size: 404B
+ dask.array&lt;stack, shape=(101,), dtype=float32, chunksize=(1,), chunktype=numpy.ndarray&gt;
+ Coordinates:
+     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
+     dcpp_init_year  float64 8B nan
+   * time            (time) object 808B 1900-12-31 00:00:00 ... 2000-12-31 00:...,
  &#39;CMIP.CMCC.CMCC-ESM2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 101)&gt; Size: 404B
  dask.array&lt;stack, shape=(101,), dtype=float32, chunksize=(1,), chunktype=numpy.ndarray&gt;
  Coordinates:
      height          float64 8B ...
-     member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
-     dcpp_init_year  float64 8B nan
-   * time            (time) object 808B 1900-12-31 00:00:00 ... 2000-12-31 00:...,
- &#39;CMIP.NCAR.CESM2-FV2.historical.Amon.gn&#39;: &lt;xarray.DataArray &#39;tas&#39; (time: 101)&gt; Size: 404B
- dask.array&lt;stack, shape=(101,), dtype=float32, chunksize=(1,), chunktype=numpy.ndarray&gt;
- Coordinates:
      member_id       &lt;U8 32B &#39;r1i1p1f1&#39;
      dcpp_init_year  float64 8B nan
    * time            (time) object 808B 1900-12-31 00:00:00 ... 2000-12-31 00:...}
@@ -987,10 +987,10 @@ Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/82c5f1c4fb4e292a933254a50f5039608f1be4b7306a99dfb3870b53e9d25c2b.png" src="../_images/82c5f1c4fb4e292a933254a50f5039608f1be4b7306a99dfb3870b53e9d25c2b.png" />
-<img alt="../_images/91a24b4f21bfa277adb64c9c21efc282e89326fe8f4ea2fe4fef042b6800115a.png" src="../_images/91a24b4f21bfa277adb64c9c21efc282e89326fe8f4ea2fe4fef042b6800115a.png" />
-<img alt="../_images/776bb93bbeee04bd6a6dce60a8a4b7996373c9d6940d353d66268ad0afb9de09.png" src="../_images/776bb93bbeee04bd6a6dce60a8a4b7996373c9d6940d353d66268ad0afb9de09.png" />
 <img alt="../_images/2f59402efe2c987fc2f707efae49eb5acf7545c6c5d7f0820a76525bcbd48de2.png" src="../_images/2f59402efe2c987fc2f707efae49eb5acf7545c6c5d7f0820a76525bcbd48de2.png" />
+<img alt="../_images/91a24b4f21bfa277adb64c9c21efc282e89326fe8f4ea2fe4fef042b6800115a.png" src="../_images/91a24b4f21bfa277adb64c9c21efc282e89326fe8f4ea2fe4fef042b6800115a.png" />
+<img alt="../_images/82c5f1c4fb4e292a933254a50f5039608f1be4b7306a99dfb3870b53e9d25c2b.png" src="../_images/82c5f1c4fb4e292a933254a50f5039608f1be4b7306a99dfb3870b53e9d25c2b.png" />
+<img alt="../_images/776bb93bbeee04bd6a6dce60a8a4b7996373c9d6940d353d66268ad0afb9de09.png" src="../_images/776bb93bbeee04bd6a6dce60a8a4b7996373c9d6940d353d66268ad0afb9de09.png" />
 </div>
 </div>
 </div>
@@ -1015,7 +1015,7 @@ Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fcfefbd86797c78196dd2e55f44365d00fba6d41923de2b5130463e165587d0b.png" src="../_images/fcfefbd86797c78196dd2e55f44365d00fba6d41923de2b5130463e165587d0b.png" />
+<img alt="../_images/5511457d4a9f868e3c8c49e2af561704e8125296df457ae6910d5f1f65b12f8a.png" src="../_images/5511457d4a9f868e3c8c49e2af561704e8125296df457ae6910d5f1f65b12f8a.png" />
 </div>
 </div>
 </div>
@@ -1102,7 +1102,7 @@ Processing dataset: CMIP.NCAR.CESM2-FV2.historical.Amon.gn
         
           By the <a href="https://esgf.llnl.gov/">ESGF</a> Community.
         
-          Last updated on 3 January 2025.
+          Last updated on 8 January 2025.
         </p>
       </div>
     </div>
