@@ -8,3 +8,5 @@ tags:
   packages:
     - Xarray
     - Intake-esgf
+  events:
+    - Cook-off 2024
