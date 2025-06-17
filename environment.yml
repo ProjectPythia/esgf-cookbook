@@ -42,3 +42,4 @@ dependencies:
       - pydata-sphinx-theme<=0.8
       - docutils==0.16
       - git+https://github.com/esgf2-us/intake-esgf
+  - mystmd
