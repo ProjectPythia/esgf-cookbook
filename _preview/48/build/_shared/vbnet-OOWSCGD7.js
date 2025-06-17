@@ -1,1 +1,1 @@
-import{a}from"/esgf-cookbook/build/_shared/chunk-AJ3KLAC2.js";import"/esgf-cookbook/build/_shared/chunk-JA5I3HXI.js";import"/esgf-cookbook/build/_shared/chunk-2NH4LW52.js";export default a();
+import{a}from"/esgf-cookbook/_preview/48/build/_shared/chunk-AJ3KLAC2.js";import"/esgf-cookbook/_preview/48/build/_shared/chunk-JA5I3HXI.js";import"/esgf-cookbook/_preview/48/build/_shared/chunk-2NH4LW52.js";export default a();
