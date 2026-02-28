@@ -2,7 +2,7 @@ name: esgf-cookbook-dev
 channels:
   - conda-forge
 dependencies:
-  - python
+  - python<3.13
   - jupyter-book
   - jupyterlab
   - jupyter_server
@@ -14,7 +14,7 @@ dependencies:
   - matplotlib
   - netCDF4
   - xarray
-  - xeofsy
+  - xeofs
   - cf_xarray
   - rooki
   - geoviews
