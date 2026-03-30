@@ -1,45 +1,33 @@
 name: esgf-cookbook-dev
 channels:
   - conda-forge
-  - pyviz
 dependencies:
-  - python<3.12
+  - python<3.13
   - jupyter-book
   - jupyterlab
   - jupyter_server
   - hvplot
   - holoviews
+  - panel
   - numpy
   - cartopy
   - matplotlib
-  - globus-compute-sdk
-  - globus-compute-endpoint
   - netCDF4
   - xarray
-  - xeofs<3
+  - xeofs
   - cf_xarray
-  - clisops
   - rooki
   - geoviews
-  - xesmf==0.8.2
+  - xesmf
   - dask
+  - distributed
   - pip
   - intake
   - intake-esm
+  - intake-esgf
+  - globus-sdk<4
   - gcsfs
   - nc-time-axis
   - ipywidgets
-  - pip:
-      - sphinx-pythia-theme
-      # The balance of this environment file pins several libraries in order for
-      # to satisfy dependencies for the sphinx-pythia-theme 2022.3.22 package.
-      - sphinx==4.5.0
-      - sphinxcontrib-applehelp<1.0.7 
-      - sphinxcontrib-devhelp<1.0.5 
-      - sphinxcontrib-htmlhelp<2.0.4 
-      - sphinxcontrib-qthelp<1.0.6 
-      - sphinxcontrib-serializinghtml<1.1.9
-      - pydata-sphinx-theme<=0.8
-      - docutils==0.16
-      - git+https://github.com/esgf2-us/intake-esgf
   - mystmd
+  - h5py

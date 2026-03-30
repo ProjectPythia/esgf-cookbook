@@ -14,7 +14,7 @@ This cookbook focuses on highlighting analysis recipes, as well as data acccess 
 
 ## Authors
 
-[Max Grover](@mgrover1), [Nathan Collier](@nocollier), [Carsten Ehbrecht](@cehbrecht), [Jacqueline Nugent](@jacnugent), [Gerardo Rivera Tello](@griverat)
+[Max Grover](https://github.com/mgrover1), [Nathan Collier](https://github.com/nocollier), [Carsten Ehbrecht](https://github.com/cehbrecht), [Jacqueline Nugent](https://github.com/jacnugent), [Gerardo Rivera Tello](https://github.com/griverat)
 
 ### Contributors
 
@@ -34,12 +34,12 @@ Scientific workflows utilizing data accessed from ESGF.
 
 ## Running the Notebooks
 
-You can either run the notebook using [the NIMBUS Juptyerhub](https://nimbus.llnl.gov) or on your local machine.
+You can either run the notebook using [the NIMBUS Juptyerhub](https://hpc.llnl.gov/services/web-services/orbit-and-jupyter-notebooks) or on your local machine.
 
 ### Running on Binder
 
 The simplest way to interact with a Jupyter Notebook is through
-[the NIMBUS Juptyerhub](https://nimbus.llnl.gov), which enables the execution of a
+[the NIMBUS Juptyerhub](https://hpc.llnl.gov/services/web-services/orbit-and-jupyter-notebooks), which enables the execution of a
 [Jupyter Book](https://jupyterbook.org) in the cloud-like infrastructure. The details of how this works are not
 important for now. All you need to know is how to launch a Pythia
 Cookbooks chapter via Binder. Simply navigate your mouse to
